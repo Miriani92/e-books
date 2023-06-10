@@ -10,6 +10,8 @@ const firebaseConfig = {
   storageBucket: "e-books-ef3b6.appspot.com",
   messagingSenderId: "100334615658",
   appId: "1:100334615658:web:314439b6ba78576fb05e13",
+  databaseURL:
+    "https://e-books-ef3b6-default-rtdb.europe-west1.firebasedatabase.app",
 };
 
 const app = initializeApp(firebaseConfig);
