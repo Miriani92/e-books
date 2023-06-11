@@ -1,13 +1,13 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { SignIn, SignUp } from "../screens";
+import { SignInContainer, SignUpContainer } from "../features";
 
 export const GuestNavigator = () => {
   const Stack = createNativeStackNavigator();
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="SignUp" component={SignUp}></Stack.Screen>
-      <Stack.Screen name="SignIn" component={SignIn}></Stack.Screen>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="SignIn" component={SignInContainer}></Stack.Screen>
+      <Stack.Screen name="SignUp" component={SignUpContainer}></Stack.Screen>
     </Stack.Navigator>
   );
 };
