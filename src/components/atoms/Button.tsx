@@ -1,12 +1,15 @@
 import React from "react";
 import { TouchableOpacity, View, Text } from "react-native";
 import Icon from "@expo/vector-icons/Feather";
+import { ActivityIndicator } from "react-native";
 
 type ButtonProps = {
   style?: string;
   icon?: any;
   text: string;
   textColor: string;
+  onPress: any;
+  isLoading: boolean;
 };
 
 export const Button: React.FC<ButtonProps> = ({
@@ -14,22 +17,26 @@ export const Button: React.FC<ButtonProps> = ({
   icon = false,
   text,
   textColor,
+  onPress,
+  isLoading,
 }) => {
   return (
     <TouchableOpacity
       className={`w-5/6 h-14  px-4 self-center justify-center rounded-lg ${style}`}
+      onPress={onPress}
     >
       <View className="flex-row justify-center">
         <Text
           className={`text-center text-lg font-bold tracking-widestr  ${textColor}`}
         >
-          {`${text}`}
+          {`${!isLoading ? text : ""}`}
         </Text>
-        {icon ? (
+        {icon && !isLoading ? (
           <View className="h-auto align-middle justify-center">
             <Icon name={icon} size={24} color={"white"} />
           </View>
         ) : null}
+        {isLoading ? <ActivityIndicator color="white" /> : null}
       </View>
     </TouchableOpacity>
   );
