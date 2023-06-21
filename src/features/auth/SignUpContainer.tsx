@@ -19,7 +19,7 @@ export const SignUpContainer = () => {
     handleOnSubmit,
   });
   const navigation = useNavigation<any>();
-  const { loading, error } = useAppSelector((state) => state.auth);
+  const { loading, error, currentUser } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
 
   async function handleOnSubmit(data: Omit<UseFormProps, "handleOnSubmit">) {
