@@ -46,6 +46,7 @@ const authSlice = createSlice({
       state.isSigndIn = true;
       state.currentUser = action.payload;
       state.loading = false;
+      state.error = null;
     });
     builder.addCase(handleSignIn.rejected, (state, action) => {
       state.error = action.payload;
@@ -56,7 +57,7 @@ const authSlice = createSlice({
     builder.addCase(handleSignOut.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(handleSignOut.fulfilled, (state, action) => {
+    builder.addCase(handleSignOut.fulfilled, (state) => {
       state.loading = false;
       state.isSigndIn = false;
       state.currentUser = null;

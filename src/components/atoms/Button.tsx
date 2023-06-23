@@ -26,7 +26,7 @@ export const Button: React.FC<ButtonProps> = ({
     <TouchableOpacity
       className={`w-5/6 h-14  px-4 self-center justify-center rounded-lg ${style}`}
       onPress={onPress}
-      disabled={!isDisabled}
+      disabled={isDisabled}
     >
       <View className="flex-row justify-center">
         <Text

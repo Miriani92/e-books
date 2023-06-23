@@ -73,7 +73,7 @@ export const SignIn: React.FC<SignInProps> = ({
         <ErrorMessage errorMessage={validateMessage.password} />
       )}
       <Button
-        isDisabled={isFieldsValidated}
+        isDisabled={!isFieldsValidated}
         text="NEXT"
         style="bg-blue-dark mt-16"
         textColor="text-white-slate"
