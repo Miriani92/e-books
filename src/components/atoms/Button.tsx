@@ -10,6 +10,7 @@ type ButtonProps = {
   textColor: string;
   onPress: any;
   isLoading: boolean;
+  isDisabled: boolean;
 };
 
 export const Button: React.FC<ButtonProps> = ({
@@ -19,11 +20,13 @@ export const Button: React.FC<ButtonProps> = ({
   textColor,
   onPress,
   isLoading,
+  isDisabled,
 }) => {
   return (
     <TouchableOpacity
       className={`w-5/6 h-14  px-4 self-center justify-center rounded-lg ${style}`}
       onPress={onPress}
+      disabled={!isDisabled}
     >
       <View className="flex-row justify-center">
         <Text

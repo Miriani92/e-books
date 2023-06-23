@@ -19,11 +19,17 @@ export const useForm = ({
   });
 
   const onInputChange = (value: string, name: string) => {
-    setFormData({ ...formData, [name]: value });
+    setFormData((state) => {
+      return { ...state, [name]: value };
+    });
   };
+
   const onSubmit = async () => {
-    handleOnSubmit && (await handleOnSubmit(formData));
-    setFormData({ name: "", email: "", password: "" });
+    let isSuccess: any;
+    if (handleOnSubmit) {
+      isSuccess = await handleOnSubmit(formData);
+      isSuccess && setFormData({ name: "", email: "", password: "" });
+    }
   };
   return { ...formData, onInputChange, onSubmit };
 };

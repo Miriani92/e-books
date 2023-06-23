@@ -16,11 +16,10 @@ export const onRegister = createAsyncThunk(
         email,
         password
       );
-      console.log("res_user", userData.user);
       const { email: registeredEmail, displayName, uid } = userData.user;
       return { registeredEmail, displayName, uid };
     } catch (error) {
-      rejectWithValue({ message: "user could not register" });
+      rejectWithValue({ message: " Couldn't register the user" });
     }
   }
 );
@@ -28,15 +27,21 @@ export const onRegister = createAsyncThunk(
 export const handleSignIn = createAsyncThunk(
   "auth/singin",
   async (
-    { email, password }: { email: string; password: string },
+    { email: insertedEmail, password }: { email: string; password: string },
     { rejectWithValue }
   ) => {
-    try {
-      const res = await signInWithEmailAndPassword(auth, email, password);
-      return res.user.email;
-    } catch (error) {
-      rejectWithValue({ message: error.message });
-    }
+    const userData = await signInWithEmailAndPassword(
+      auth,
+      insertedEmail,
+      password
+    )
+      .then((res) => {
+        const { email, uid } = res.user;
+        const currentUser = { email, uid };
+        return currentUser;
+      })
+      .catch(() => rejectWithValue("Email or password is incorrect"));
+    return userData;
   }
 );
 
@@ -46,7 +51,7 @@ export const handleSignOut = createAsyncThunk(
     try {
       signOut(auth);
     } catch (error) {
-      rejectWithValue({ message: error.message });
+      rejectWithValue({ message: "Couldn’t sign out" });
     }
   }
 );

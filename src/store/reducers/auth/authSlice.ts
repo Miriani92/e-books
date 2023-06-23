@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, isRejected } from "@reduxjs/toolkit";
 import { onRegister } from "../../actions/auth/authActions";
 import { handleSignOut } from "../../actions/auth/authActions";
 import { handleSignIn } from "../../actions/auth/authActions";
@@ -43,13 +43,13 @@ const authSlice = createSlice({
       state.loading = true;
     });
     builder.addCase(handleSignIn.fulfilled, (state, action) => {
-      state.loading = false;
-      state.isSigndIn = !!action.payload;
+      state.isSigndIn = true;
       state.currentUser = action.payload;
+      state.loading = false;
     });
     builder.addCase(handleSignIn.rejected, (state, action) => {
-      state.loading = false;
       state.error = action.payload;
+      state.loading = false;
     });
 
     // handle sign out
@@ -57,7 +57,6 @@ const authSlice = createSlice({
       state.loading = true;
     });
     builder.addCase(handleSignOut.fulfilled, (state, action) => {
-      console.log("fullfield", action.payload);
       state.loading = false;
       state.isSigndIn = false;
       state.currentUser = null;
