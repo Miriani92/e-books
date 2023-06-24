@@ -6,17 +6,25 @@ import { Provider } from "react-redux";
 import { store } from "./store";
 import { ErrorHandler } from "./screens/global/ErrorHanlder";
 import { Root } from "./navigation/Root";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistor } from "./store";
+import { TextInput } from "react-native";
 
 export default function App() {
   return (
-    <Provider store={store}>
-      <ErrorHandler>
-        <StatusBar style="dark" />
-        <NavigationContainer>
-          <Root />
-        </NavigationContainer>
-      </ErrorHandler>
-    </Provider>
+    <ErrorHandler>
+      <Provider store={store}>
+        <PersistGate
+          laoding={<TextInput>Loading...</TextInput>}
+          persistor={persistor}
+        >
+          <StatusBar style="dark" />
+          <NavigationContainer>
+            <Root />
+          </NavigationContainer>
+        </PersistGate>
+      </Provider>
+    </ErrorHandler>
   );
 }
 
