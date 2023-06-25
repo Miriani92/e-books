@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
-
 type ErrorMessageProps = {
   errorMessage: string | undefined;
 };

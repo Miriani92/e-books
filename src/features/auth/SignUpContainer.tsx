@@ -37,16 +37,20 @@ export const SignUpContainer = () => {
     password: "",
     handleOnSubmit,
   });
-  const { loading, error, currentUser, isSigndIn } = useAppSelector(
+  const { loading, error, isSigndIn }: any = useAppSelector(
     (state) => state.auth
   );
   const navigation = useNavigation<any>();
   const dispatch = useAppDispatch();
 
-  async function handleOnSubmit(data: { email: string; password: string }) {
+  async function handleOnSubmit(data: {
+    name: string;
+    email: string;
+    password: string;
+  }) {
     setIsEditing({ name: false, email: false, password: false });
-    const { email, password } = data;
-    await dispatch(onRegister({ email, password }));
+    const { name, email, password } = data;
+    await dispatch(onRegister({ name, email, password }));
     return isSigndIn;
   }
   const handleNavigateToSignIn = () => {
