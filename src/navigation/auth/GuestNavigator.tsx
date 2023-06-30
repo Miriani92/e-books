@@ -1,6 +1,6 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { SignInContainer, SignUpContainer } from "../features";
+import { SignInContainer, SignUpContainer } from "../../features";
 
 export const GuestNavigator = () => {
   const Stack = createNativeStackNavigator();

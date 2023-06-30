@@ -1,6 +1,6 @@
 import React from "react";
-import { GuestNavigator } from "./GuestNavigator";
-import { UserNavigator } from "./UserNavigator";
+import { GuestNavigator } from "./auth/GuestNavigator";
+import { UserNavigator } from "./user/UserNavigator";
 import { useCurrentUser } from "../hooks/auth/useCurrentUser";
 
 export const Root = () => {
