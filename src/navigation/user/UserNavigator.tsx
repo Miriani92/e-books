@@ -5,6 +5,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { ReadStackNavigator } from "./nested/ReadStackNavigator";
+import { ListenStackNavigator } from "./nested/ListenStackNavigator";
 
 export const UserNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -44,7 +45,7 @@ export const UserNavigator = () => {
   return (
     <Tab.Navigator screenOptions={setOptions}>
       <Tab.Screen name="Read" component={ReadStackNavigator}></Tab.Screen>
-      <Tab.Screen name="Listen" component={HomeContainer}></Tab.Screen>
+      <Tab.Screen name="Listen" component={ListenStackNavigator}></Tab.Screen>
       <Tab.Screen name="Explore" component={HomeContainer}></Tab.Screen>
       <Tab.Screen name="Parameters" component={HomeContainer}></Tab.Screen>
     </Tab.Navigator>
