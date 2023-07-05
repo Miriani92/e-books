@@ -2,7 +2,6 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { TabNavigator } from "./UserTabNavigator";
 import { FavoritesScreen } from "../../screens";
-import { FilterDrawerNavigator } from "./nested/FilterDrawerNavigator";
 
 export const UserNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -15,7 +14,6 @@ export const UserNavigator = () => {
         options={{ headerShown: true }}
         component={FavoritesScreen}
       ></Stack.Screen>
-      <Stack.Screen name="Filter" component={FilterDrawerNavigator} />
     </Stack.Navigator>
   );
 };

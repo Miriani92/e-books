@@ -1,13 +1,11 @@
 import { View, TouchableOpacity } from "react-native";
-
 import React from "react";
 import { SearchInput } from "../atoms/SearchInput";
 import { AntDesign } from "@expo/vector-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { MaterialIcons } from "@expo/vector-icons";
-import type { HeaderProps } from "../../navigation/user/nested/ReadStackNavigator";
 
-export const ReadScreenHeader: React.FC<HeaderProps> = ({
+export const ReadScreenHeader: React.FC<any> = ({
   route,
   navigation,
   back,
@@ -16,9 +14,9 @@ export const ReadScreenHeader: React.FC<HeaderProps> = ({
   const navigateToFavorte = () => {
     navigation.push("Favorite");
   };
-  // const navigateToDrawer=()=>{
-
-  // }
+  const navigateToDrawerFilter = () => {
+    navigation.openDrawer();
+  };
   return (
     <SafeAreaView className="self-center h-30 flex-row w-11/12  align-middle justify-around">
       <SearchInput />
@@ -28,7 +26,10 @@ export const ReadScreenHeader: React.FC<HeaderProps> = ({
       >
         <AntDesign name="hearto" size={24} color="grey" />
       </TouchableOpacity>
-      <TouchableOpacity className="align-middle justify-center">
+      <TouchableOpacity
+        className="align-middle justify-center"
+        onPress={navigateToDrawerFilter}
+      >
         <MaterialIcons name="settings-ethernet" size={30} color="grey" />
       </TouchableOpacity>
     </SafeAreaView>

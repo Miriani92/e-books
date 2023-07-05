@@ -4,8 +4,8 @@ import { HomeContainer } from "../../features";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
-import { ReadStackNavigator } from "./nested/ReadStackNavigator";
-import { ListenStackNavigator } from "./nested/ListenStackNavigator";
+import { ReadNavigator } from "./nested/ReadNavigator";
+import { ListenNavigator } from "./nested/ListenNavigator";
 
 export const TabNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -44,8 +44,8 @@ export const TabNavigator = () => {
 
   return (
     <Tab.Navigator screenOptions={setOptions}>
-      <Tab.Screen name="Read" component={ReadStackNavigator}></Tab.Screen>
-      <Tab.Screen name="Listen" component={ListenStackNavigator}></Tab.Screen>
+      <Tab.Screen name="Read" component={ReadNavigator}></Tab.Screen>
+      <Tab.Screen name="Listen" component={ListenNavigator}></Tab.Screen>
       <Tab.Screen name="Explore" component={HomeContainer}></Tab.Screen>
       <Tab.Screen name="Parameters" component={HomeContainer}></Tab.Screen>
     </Tab.Navigator>
