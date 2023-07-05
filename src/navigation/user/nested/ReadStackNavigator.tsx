@@ -2,7 +2,6 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ReadScreen } from "../../../screens";
 import { HeaderWithSearchBar } from "../../../components";
-import { FavoritesScreen } from "../../../screens";
 import type { NativeStackNavigationOptions } from "@react-navigation/native-stack";
 import type { Route } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -25,7 +24,6 @@ export const ReadStackNavigator = () => {
       }}
     >
       <Stack.Screen name="Home" component={ReadScreen}></Stack.Screen>
-      <Stack.Screen name="Favorites" component={FavoritesScreen}></Stack.Screen>
     </Stack.Navigator>
   );
 };

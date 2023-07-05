@@ -1,4 +1,5 @@
-import { View } from "react-native";
+import { View, TouchableOpacity } from "react-native";
+
 import React from "react";
 import { SearchInput } from "../atoms/SearchInput";
 import { AntDesign } from "@expo/vector-icons";
@@ -12,15 +13,24 @@ export const ReadScreenHeader: React.FC<HeaderProps> = ({
   back,
   options,
 }) => {
+  const navigateToFavorte = () => {
+    navigation.push("Favorite");
+  };
+  // const navigateToDrawer=()=>{
+
+  // }
   return (
     <SafeAreaView className="self-center h-30 flex-row w-11/12  align-middle justify-around">
       <SearchInput />
-      <View className="align-middle justify-center ">
+      <TouchableOpacity
+        className="align-middle justify-center "
+        onPress={navigateToFavorte}
+      >
         <AntDesign name="hearto" size={24} color="grey" />
-      </View>
-      <View className="align-middle justify-center">
+      </TouchableOpacity>
+      <TouchableOpacity className="align-middle justify-center">
         <MaterialIcons name="settings-ethernet" size={30} color="grey" />
-      </View>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
