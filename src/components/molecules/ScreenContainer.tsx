@@ -9,6 +9,12 @@ export const ScreenContainer = (props: {
     | React.ReactElement<any, string | React.JSXElementConstructor<any>>
     | React.ReactFragment
     | React.ReactPortal;
+  backGroundColor?: string;
 }) => {
-  return <SafeAreaView className="w-11/12">{props.children}</SafeAreaView>;
+  const backgroundColor = props.backGroundColor ? props.backGroundColor : "";
+  return (
+    <SafeAreaView className={`w-11/12 self-center ${backgroundColor}`}>
+      {props.children}
+    </SafeAreaView>
+  );
 };

@@ -1,12 +1,14 @@
-import { Text, View } from "react-native";
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
+import { Text, TouchableOpacity } from "react-native";
+import { ScreenContainer } from "../../../components/molecules/ScreenContainer";
 
 export const Explore = () => {
-  const navigation = useNavigation<any>();
   return (
-    <View>
-      <Text>Explore</Text>
-    </View>
+    <ScreenContainer>
+      <Text className="text-large my-4">CATEGORIES</Text>
+      <TouchableOpacity>
+        <Text className="text-blue">SEE ALLL</Text>
+      </TouchableOpacity>
+    </ScreenContainer>
   );
 };
