@@ -1,4 +1,4 @@
-import { View, TouchableOpacity } from "react-native";
+import { TouchableOpacity } from "react-native";
 import React from "react";
 import { SearchInput } from "../atoms/SearchInput";
 import { AntDesign } from "@expo/vector-icons";

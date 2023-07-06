@@ -6,11 +6,11 @@ import { ActivityIndicator } from "react-native";
 type ButtonProps = {
   style?: string;
   icon?: any;
-  text: string;
-  textColor: string;
-  onPress: any;
-  isLoading: boolean;
-  isDisabled: boolean;
+  text?: string;
+  textColor?: string;
+  onPress?: any;
+  isLoading?: boolean;
+  isDisabled?: boolean;
 };
 
 export const Button: React.FC<ButtonProps> = ({

@@ -1,6 +1,6 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { ReadScreenContainer } from "../../../features";
+import { FilterContainer, ReadScreenContainer } from "../../../features";
 import { HeaderWithSearchBar } from "../../../components";
 
 export const ReadNavigator = () => {
@@ -11,7 +11,10 @@ export const ReadNavigator = () => {
         header: (props: any) => {
           return <HeaderWithSearchBar {...props} />;
         },
+        drawerPosition: "right",
+        drawerType: "front",
       }}
+      drawerContent={(props) => <FilterContainer {...props} />}
     >
       <Drawer.Screen
         name="Home"
