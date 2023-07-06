@@ -6,6 +6,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { ReadNavigator } from "./nested/ReadNavigator";
 import { ListenNavigator } from "./nested/ListenNavigator";
+import { ExploreNavigator } from "./nested/ExploreNavigator";
 
 export const TabNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -46,7 +47,7 @@ export const TabNavigator = () => {
     <Tab.Navigator screenOptions={setOptions}>
       <Tab.Screen name="Read" component={ReadNavigator}></Tab.Screen>
       <Tab.Screen name="Listen" component={ListenNavigator}></Tab.Screen>
-      <Tab.Screen name="Explore" component={HomeContainer}></Tab.Screen>
+      <Tab.Screen name="Explore" component={ExploreNavigator}></Tab.Screen>
       <Tab.Screen name="Parameters" component={HomeContainer}></Tab.Screen>
     </Tab.Navigator>
   );
