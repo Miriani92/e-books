@@ -5,3 +5,4 @@ export { Listen as ListenScreen } from "./user/listen/Listen";
 export { Favorite as FavoritesScreen } from "./user/shared/Favorite";
 export { Filter as FitlerScreen } from "./user/drawer/Filter";
 export { Explore as ExploreScreen } from "./user/explore/Explore";
+export { Categories as CategoriesScreen } from "./user/explore/nested/Categories";
