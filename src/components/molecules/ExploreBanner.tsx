@@ -7,6 +7,8 @@ export const ExploreBanner = () => {
     <View className="mt-2">
       <FlatList
         data={bannerData}
+        keyExtractor={(item: any) => item.id}
+        horizontal
         renderItem={({ item }) => (
           <Image
             source={item.image}
@@ -14,8 +16,6 @@ export const ExploreBanner = () => {
             resizeMode="cover"
           />
         )}
-        keyExtractor={(item: any) => item.id}
-        horizontal
       />
     </View>
   );

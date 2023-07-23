@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { TabNavigator } from "./UserTabNavigator";
 import { FavoritesScreen } from "../../screens";
 import { CategoriesScreen } from "../../screens";
+import { WeeklyBestSellersScreen } from "../../screens";
 
 export const UserNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -19,6 +20,11 @@ export const UserNavigator = () => {
         name="Categories"
         options={{ headerShown: true }}
         component={CategoriesScreen}
+      ></Stack.Screen>
+      <Stack.Screen
+        name="BestSellers"
+        options={{ headerShown: true }}
+        component={WeeklyBestSellersScreen}
       ></Stack.Screen>
     </Stack.Navigator>
   );

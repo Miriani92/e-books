@@ -7,3 +7,6 @@ export { CategoriesCircle } from "./atoms/CategoriesCircle";
 export { ScreenContainer } from "./molecules/ScreenContainer";
 export { CategoriesBar } from "./molecules/CategoriesBar";
 export { ExploreBanner } from "./molecules/ExploreBanner";
+export { WeeklyBestSeller } from "./organisms/WeeklyBestSeller";
+export { WeeklyBestSellerBanner } from "./molecules/WeeklyBestSellerBanner";
+export { SeeAllButton } from "./atoms/SeeAllButton";

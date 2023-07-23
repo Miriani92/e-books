@@ -1,10 +1,13 @@
 import React from "react";
 import { Entypo } from "@expo/vector-icons";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import { ScreenContainer } from "../../../components/molecules/ScreenContainer";
 import { useNavigation } from "@react-navigation/native";
 import { CategoriesBar } from "../../../components";
 import { ExploreBanner } from "../../../components";
+import { WeeklyBestSeller } from "../../../components";
+import { SeeAllButton } from "../../../components";
+import { ScrollView } from "react-native-gesture-handler";
 
 export const Explore = () => {
   const navigation = useNavigation<any>();
@@ -13,17 +16,18 @@ export const Explore = () => {
   };
 
   return (
-    <ScreenContainer>
-      <Text className="text-large my-4">CATEGORIES</Text>
-      <TouchableOpacity
-        className="flex-row align-middle "
-        onPress={handleNavigateCategories}
-      >
-        <Text className="text-blue self-center">SEE ALLL</Text>
-        <Entypo name="arrow-right" size={24} color="#60a5fa" />
-      </TouchableOpacity>
-      <CategoriesBar />
-      <ExploreBanner />
-    </ScreenContainer>
+    <ScrollView>
+      <ScreenContainer>
+        <Text className="text-large my-4">CATEGORIES</Text>
+        <SeeAllButton
+          handlePress={handleNavigateCategories}
+          textColor="text-blue-light"
+          iconColor="#60a5fa"
+        />
+        <CategoriesBar />
+        <ExploreBanner />
+        <WeeklyBestSeller />
+      </ScreenContainer>
+    </ScrollView>
   );
 };
