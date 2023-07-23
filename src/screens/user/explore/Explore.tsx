@@ -4,6 +4,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 import { ScreenContainer } from "../../../components/molecules/ScreenContainer";
 import { useNavigation } from "@react-navigation/native";
 import { CategoriesBar } from "../../../components";
+import { ExploreBanner } from "../../../components";
 
 export const Explore = () => {
   const navigation = useNavigation<any>();
@@ -22,6 +23,7 @@ export const Explore = () => {
         <Entypo name="arrow-right" size={24} color="#60a5fa" />
       </TouchableOpacity>
       <CategoriesBar />
+      <ExploreBanner />
     </ScreenContainer>
   );
 };
