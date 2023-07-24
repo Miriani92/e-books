@@ -6,6 +6,7 @@ import {
   MyBooksScreen,
   CategoriesScreen,
   FavoritesScreen,
+  NewBooksScreen,
 } from "../../screens";
 
 export const UserNavigator = () => {
@@ -33,6 +34,11 @@ export const UserNavigator = () => {
         name="MyBooks"
         options={{ headerShown: true }}
         component={MyBooksScreen}
+      ></Stack.Screen>
+      <Stack.Screen
+        name="NewBooks"
+        options={{ headerShown: true }}
+        component={NewBooksScreen}
       ></Stack.Screen>
     </Stack.Navigator>
   );
