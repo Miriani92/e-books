@@ -25,6 +25,7 @@ module.exports = {
       "purple-dark": "#a21caf",
       "yellow-dark": "#eab308",
       "violet-dark": "#6d28d9",
+      "slate-300": "#64748b",
       lime: "#a3e635",
       orange: "#fb923c",
       blue: "#1fb6ff",

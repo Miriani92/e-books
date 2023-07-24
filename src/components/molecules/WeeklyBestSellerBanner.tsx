@@ -15,7 +15,6 @@ export const WeeklyBestSellerBanner = () => {
       className="w-full  bg-sky-dark  p-4 rounded-tl-lg rounded-tr-lg h-20 justify-between"
     >
       <Text className="text-white-slate">WEEKLY BESTSELLERS</Text>
-
       <SeeAllButton textColor="text-white-slate" iconColor="#ffffff" />
     </TouchableOpacity>
   );

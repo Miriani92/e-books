@@ -1,6 +1,5 @@
 import React from "react";
-import { Entypo } from "@expo/vector-icons";
-import { Text, TouchableOpacity } from "react-native";
+import { Text } from "react-native";
 import { ScreenContainer } from "../../../components/molecules/ScreenContainer";
 import { useNavigation } from "@react-navigation/native";
 import { CategoriesBar } from "../../../components";
