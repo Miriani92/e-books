@@ -1,9 +1,12 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { TabNavigator } from "./UserTabNavigator";
-import { FavoritesScreen } from "../../screens";
-import { CategoriesScreen } from "../../screens";
-import { WeeklyBestSellersScreen } from "../../screens";
+import {
+  WeeklyBestSellersScreen,
+  MyBooksScreen,
+  CategoriesScreen,
+  FavoritesScreen,
+} from "../../screens";
 
 export const UserNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -25,6 +28,11 @@ export const UserNavigator = () => {
         name="BestSellers"
         options={{ headerShown: true }}
         component={WeeklyBestSellersScreen}
+      ></Stack.Screen>
+      <Stack.Screen
+        name="MyBooks"
+        options={{ headerShown: true }}
+        component={MyBooksScreen}
       ></Stack.Screen>
     </Stack.Navigator>
   );

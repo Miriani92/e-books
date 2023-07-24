@@ -7,3 +7,5 @@ export { Filter as FitlerScreen } from "./user/drawer/Filter";
 export { Explore as ExploreScreen } from "./user/explore/Explore";
 export { Categories as CategoriesScreen } from "./user/explore/nested/Categories";
 export { WeeklyBestSellers as WeeklyBestSellersScreen } from "./user/explore/nested/WeeklyBestSellers";
+
+export { MyBooks as MyBooksScreen } from "./user/read/nested/MyBooks";
