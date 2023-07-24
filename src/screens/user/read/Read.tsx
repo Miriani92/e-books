@@ -1,13 +1,21 @@
-import { Text, View } from "react-native";
 import React from "react";
+import { Text, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { ScreenContainer } from "../../../components";
+import { SeeAllButton } from "../../../components";
 
 export const Read = () => {
   const navigation = useNavigation<any>();
   return (
-    <View>
-      <Text> Read</Text>
-    </View>
+    <ScrollView>
+      <ScreenContainer>
+        <Text className="text-large my-4">MY BOOKS</Text>
+        <SeeAllButton
+          handlePress={() => console.log("here")}
+          textColor="text-blue-light"
+          iconColor="#60a5fa"
+        />
+      </ScreenContainer>
+    </ScrollView>
   );
 };

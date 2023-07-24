@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { Image } from "react-native";
 import React from "react";
 import { EvilIcons } from "@expo/vector-icons";
@@ -31,7 +31,10 @@ export const Book: React.FC<BookProps> = ({
       </View>
       <View className="justify-center">
         <View className="justify-center flex-row align-middle  ">
-          <View className="rounded-full w-8 h-8 bg-yellow-light mr-2 justify-center">
+          <TouchableOpacity
+            className="rounded-full w-8 h-8 bg-yellow-light mr-2 justify-center"
+            onPress={() => console.log("eye_cliked")}
+          >
             <View className="self-center">
               <EvilIcons
                 name="eye"
@@ -40,12 +43,15 @@ export const Book: React.FC<BookProps> = ({
                 className="self-center"
               />
             </View>
-          </View>
-          <View className="rounded-full bg-sky-light w-8 h-8 justify-center align-middle">
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => console.log("heart_clicked")}
+            className="rounded-full bg-sky-light w-8 h-8 justify-center align-middle"
+          >
             <View className="self-center">
               <Feather name="heart" size={22} color="black" />
             </View>
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
     </View>

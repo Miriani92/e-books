@@ -1,4 +1,4 @@
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import React from "react";
 import { SearchInput } from "../atoms/SearchInput";
 import { AntDesign } from "@expo/vector-icons";
@@ -18,7 +18,7 @@ export const ReadScreenHeader: React.FC<any> = ({
     navigation.openDrawer();
   };
   return (
-    <SafeAreaView className="self-center h-30 flex-row w-11/12  align-middle justify-around">
+    <View className="self-center mt-12  flex-row w-full  align-bottom   justify-around">
       <SearchInput />
       <TouchableOpacity
         className="align-middle justify-center "
@@ -32,6 +32,6 @@ export const ReadScreenHeader: React.FC<any> = ({
       >
         <MaterialIcons name="settings-ethernet" size={30} color="grey" />
       </TouchableOpacity>
-    </SafeAreaView>
+    </View>
   );
 };
