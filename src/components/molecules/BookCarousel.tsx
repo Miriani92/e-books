@@ -1,15 +1,27 @@
-import { FlatList } from "react-native";
+import React, { useRef } from "react";
+import { FlatList, Animated, View } from "react-native";
 import { MyBook } from "./MyBook";
-import React from "react";
 
+const AnimatedFlatList = Animated.createAnimatedComponent(FlatList);
 export const BookCarousel: React.FC<any> = ({ data }) => {
+  const xAxis = useRef(new Animated.Value(0)).current;
+
+  const handleScroll = Animated.event(
+    [{ nativeEvent: { contentOffset: { x: xAxis } } }],
+    { useNativeDriver: true }
+  );
+
   return (
-    <FlatList
+    <AnimatedFlatList
+      scrollEventThrottle={16}
       contentContainerStyle={{ marginTop: 8 }}
       data={data}
-      keyExtractor={(item) => item.id}
+      keyExtractor={(item: any) => item.id}
       horizontal
-      renderItem={(item) => <MyBook {...item} />}
+      onScroll={handleScroll}
+      renderItem={({ index, item }) => (
+        <MyBook item={item} xAxis={xAxis} index={index} />
+      )}
     />
   );
 };

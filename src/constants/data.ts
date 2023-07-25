@@ -15,36 +15,36 @@ const {
 } = images;
 
 export const bannerData = [
-  { id: 1, image: Duck },
-  { id: 2, image: StarBoy },
-  { id: 3, image: SadEgg },
-  { id: 4, image: LightBulb },
+  { id: 0, image: Duck },
+  { id: 1, image: StarBoy },
+  { id: 2, image: SadEgg },
+  { id: 3, image: LightBulb },
 ];
 
 export const bestSellingBooksData = [
   {
-    id: 1,
+    id: 0,
     title: "firstBook",
     author: "Dostoevsky",
     imageSource: Book1,
     star: 3.4,
   },
   {
-    id: 2,
+    id: 1,
     author: "Tolostoy",
     title: "secondBook",
     imageSource: Book2,
     star: 5,
   },
   {
-    id: 3,
+    id: 2,
     author: "Mann",
     title: "thirdBook",
     imageSource: Book3,
     star: 4.5,
   },
   {
-    id: 4,
+    id: 3,
     author: "Proust",
     title: "fourthBook",
     imageSource: Book4,
@@ -54,25 +54,25 @@ export const bestSellingBooksData = [
 
 export const MyBooksData = [
   {
-    id: 1,
+    id: 0,
     author: "Nabokov",
     title: "Book one",
     imageSource: MyBook1,
   },
   {
-    id: 2,
+    id: 1,
     author: "Mann",
     title: "Book two",
     imageSource: MyBook2,
   },
   {
-    id: 3,
+    id: 2,
     author: "Dostoevsky",
     title: "Book three",
     imageSource: MyBook3,
   },
   {
-    id: 4,
+    id: 3,
     author: "Galaktioni",
     title: "Book four",
     imageSource: MyBook4,
