@@ -9,6 +9,9 @@ export const ExploreBanner = () => {
         data={bannerData}
         keyExtractor={(item: any) => item.id}
         horizontal
+        snapToInterval={320}
+        decelerationRate={0}
+        bounces={false}
         renderItem={({ item }) => (
           <Image
             source={item.image}

@@ -1,5 +1,18 @@
 import { images } from "../images";
-const { Duck, StarBoy, SadEgg, LightBulb, Book1, Book2, Book3, Book4 } = images;
+const {
+  Duck,
+  StarBoy,
+  SadEgg,
+  LightBulb,
+  Book1,
+  Book2,
+  Book3,
+  Book4,
+  MyBook1,
+  MyBook2,
+  MyBook3,
+  MyBook4,
+} = images;
 
 export const bannerData = [
   { id: 1, image: Duck },
@@ -36,5 +49,32 @@ export const bestSellingBooksData = [
     title: "fourthBook",
     imageSource: Book4,
     star: 4.7,
+  },
+];
+
+export const MyBooksData = [
+  {
+    id: 1,
+    author: "Nabokov",
+    title: "Book one",
+    imageSource: MyBook1,
+  },
+  {
+    id: 2,
+    author: "Mann",
+    title: "Book two",
+    imageSource: MyBook2,
+  },
+  {
+    id: 3,
+    author: "Dostoevsky",
+    title: "Book three",
+    imageSource: MyBook3,
+  },
+  {
+    id: 4,
+    author: "Galaktioni",
+    title: "Book four",
+    imageSource: MyBook4,
   },
 ];

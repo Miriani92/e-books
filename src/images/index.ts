@@ -9,4 +9,8 @@ export const images = {
   Book2: require("../../assets/book2.jpg"),
   Book3: require("../../assets/book3.jpg"),
   Book4: require("../../assets/book4.jpg"),
+  MyBook1: require("../../assets/mybook1.jpg"),
+  MyBook2: require("../../assets/mybook2.jpg"),
+  MyBook3: require("../../assets/mybook3.jpg"),
+  MyBook4: require("../../assets/mybook4.jpg"),
 };

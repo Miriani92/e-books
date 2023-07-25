@@ -5,6 +5,8 @@ import { ScreenContainer } from "../../../components";
 import { SeeAllButton } from "../../../components";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { AntDesign } from "@expo/vector-icons";
+import { BookCarousel } from "../../../components";
+import { MyBooksData } from "../../../constants/data";
 
 export const Read = () => {
   const navigation = useNavigation<any>();
@@ -35,6 +37,7 @@ export const Read = () => {
             </View>
           </TouchableOpacity>
         </View>
+        <BookCarousel data={MyBooksData} />
       </ScreenContainer>
     </ScrollView>
   );
