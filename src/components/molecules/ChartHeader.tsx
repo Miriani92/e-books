@@ -1,17 +1,18 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View } from "react-native";
 import { ChartButton } from "../atoms/ChartButton";
+import { ChartSubHeader } from "./ChartSubHeader";
 import React from "react";
 
 export const ChartHeader: React.FC<any> = (props) => {
-  const { onChangeHeader, activeIndex } = props;
+  const { onChangeHeader, activeIndex, isFilter } = props;
 
   const leftButtonTitle = "Reader\nChart";
   const middleButtonTitle = "10 Most\nActive\nReader";
   const rightButtonTitle = "10 Most\npopular\nBook";
 
   const activeStyleObj = {
-    background: "bg-green-dark",
-    textColor: "text-white",
+    background: "bg-pink-dark",
+    textColor: "text-white-slate",
   };
   const hanldeOnPress = (ind: number) => {
     let arg = {};
@@ -27,25 +28,28 @@ export const ChartHeader: React.FC<any> = (props) => {
     onChangeHeader(arg);
   };
   return (
-    <View className="flex-row w-full">
-      <ChartButton
-        activeStyle={0 === activeIndex && activeStyleObj}
-        curvePosition="tl"
-        text={leftButtonTitle}
-        onPress={() => hanldeOnPress(0)}
-      />
-      <ChartButton
-        activeStyle={1 === activeIndex && activeStyleObj}
-        isMiddle={true}
-        text={middleButtonTitle}
-        onPress={() => hanldeOnPress(1)}
-      />
-      <ChartButton
-        activeStyle={2 === activeIndex && activeStyleObj}
-        curvePosition="tr"
-        text={rightButtonTitle}
-        onPress={() => hanldeOnPress(2)}
-      />
-    </View>
+    <>
+      <View className="flex-row w-full">
+        <ChartButton
+          activeStyle={0 === activeIndex && activeStyleObj}
+          curvePosition="tl"
+          text={leftButtonTitle}
+          onPress={() => hanldeOnPress(0)}
+        />
+        <ChartButton
+          activeStyle={1 === activeIndex && activeStyleObj}
+          isMiddle={true}
+          text={middleButtonTitle}
+          onPress={() => hanldeOnPress(1)}
+        />
+        <ChartButton
+          activeStyle={2 === activeIndex && activeStyleObj}
+          curvePosition="tr"
+          text={rightButtonTitle}
+          onPress={() => hanldeOnPress(2)}
+        />
+      </View>
+      <ChartSubHeader isFilter={isFilter} />
+    </>
   );
 };

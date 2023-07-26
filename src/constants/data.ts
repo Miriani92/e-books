@@ -111,3 +111,21 @@ export const chartData = [
     title: "Book four",
   },
 ];
+export const chartFilterButtonsData = [
+  {
+    id: 0,
+    text: "week",
+  },
+  {
+    id: 1,
+    text: "month",
+  },
+  {
+    id: 2,
+    text: "year",
+  },
+  {
+    id: 3,
+    text: "all time",
+  },
+];

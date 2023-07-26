@@ -21,6 +21,7 @@ export const Chart = () => {
           <ChartHeader
             onChangeHeader={handleChangeHeader}
             activeIndex={acitiveIndex}
+            isFilter={filter}
           />
         }
         ItemSeparatorComponent={flatListSeparator}
