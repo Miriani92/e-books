@@ -12,3 +12,4 @@ export { WeeklyBestSellerBanner } from "./molecules/WeeklyBestSellerBanner";
 export { SeeAllButton } from "./atoms/SeeAllButton";
 export { Book } from "./molecules/Book";
 export { BookCarousel } from "./molecules/BookCarousel";
+export { Chart } from "./organisms/Chart";

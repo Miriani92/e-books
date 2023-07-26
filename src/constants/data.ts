@@ -78,3 +78,36 @@ export const MyBooksData = [
     imageSource: MyBook4,
   },
 ];
+
+export const chartData = [
+  {
+    id: 0,
+    author: "Nabokov",
+    title: "Book one",
+  },
+  {
+    id: 1,
+    author: "Mann",
+    title: "Book two",
+  },
+  {
+    id: 2,
+    author: "Dostoevsky",
+    title: "Book three",
+  },
+  {
+    id: 3,
+    author: "Galaktioni",
+    title: "Book four",
+  },
+  {
+    id: 4,
+    author: "Dostoevsky",
+    title: "Book three",
+  },
+  {
+    id: 5,
+    author: "Galaktioni",
+    title: "Book four",
+  },
+];

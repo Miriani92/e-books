@@ -8,6 +8,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { BookCarousel } from "../../../components";
 import { MyBooksData } from "../../../constants/data";
 import { ExploreBanner } from "../../../components";
+import { Chart } from "../../../components";
 
 export const Read = () => {
   const navigation = useNavigation<any>();
@@ -40,6 +41,7 @@ export const Read = () => {
         </View>
         <BookCarousel data={MyBooksData} />
         <ExploreBanner />
+        <Chart />
       </ScreenContainer>
     </ScrollView>
   );
