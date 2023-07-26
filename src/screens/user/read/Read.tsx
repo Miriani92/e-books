@@ -7,6 +7,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { AntDesign } from "@expo/vector-icons";
 import { BookCarousel } from "../../../components";
 import { MyBooksData } from "../../../constants/data";
+import { ExploreBanner } from "../../../components";
 
 export const Read = () => {
   const navigation = useNavigation<any>();
@@ -38,6 +39,7 @@ export const Read = () => {
           </TouchableOpacity>
         </View>
         <BookCarousel data={MyBooksData} />
+        <ExploreBanner />
       </ScreenContainer>
     </ScrollView>
   );

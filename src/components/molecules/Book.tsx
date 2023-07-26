@@ -17,7 +17,7 @@ export const Book: React.FC<BookProps> = ({
   star: starNumber,
 }) => {
   return (
-    <View className="justify-between flex-row mb-4">
+    <View className="justify-between flex-row">
       <View className="flex-row gap-2">
         <Image source={imageSource} className="w-20 h-32 rounded-md" />
         <View>

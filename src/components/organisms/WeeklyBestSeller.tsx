@@ -1,17 +1,25 @@
 import React from "react";
-import { View } from "react-native";
+import { View, FlatList, Image } from "react-native";
 import { bestSellingBooksData } from "../../constants/data";
 import { WeeklyBestSellerBanner } from "../molecules/WeeklyBestSellerBanner";
 import { Book } from "../molecules/Book";
 
 export const WeeklyBestSeller = () => {
+  const flatListSeparator = () => {
+    return <View className="mb-4"></View>;
+  };
   return (
-    <View className="w-full  mt-2 rounded-lg bg-violet-light">
+    <View className="w-full   rounded-lg bg-violet-light">
       <WeeklyBestSellerBanner />
       <View className="p-4">
-        {bestSellingBooksData.map((item: any) => {
-          return <Book key={item.id} {...item} />;
-        })}
+        <FlatList
+          ItemSeparatorComponent={flatListSeparator}
+          data={bestSellingBooksData}
+          keyExtractor={(item: any) => item.id}
+          snapToInterval={330}
+          decelerationRate={0}
+          renderItem={({ item }) => <Book key={item.id} {...item} />}
+        />
       </View>
     </View>
   );

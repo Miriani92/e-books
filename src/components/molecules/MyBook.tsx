@@ -9,19 +9,15 @@ export const MyBook: React.FC<any> = ({ item, xAxis, index }) => {
   const translateX = Animated.add(
     xAxis,
     xAxis.interpolate({
-      inputRange: [0, 0.00001 + index * BOOK_WIDTH],
+      inputRange: [0, 0.0001 + index * BOOK_WIDTH],
       outputRange: [0, -index * BOOK_WIDTH],
-      extrapolate: "clamp",
+      extrapolateRight: "clamp",
     })
   );
   return (
     <Animated.View
       style={{
-        marginRight: 16,
         transform: [{ translateX: translateX }],
-        shadowColor: "black",
-        shadowRadius: 4,
-        shadowOpacity: 0.2,
       }}
     >
       <Image

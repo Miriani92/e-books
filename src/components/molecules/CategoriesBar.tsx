@@ -4,7 +4,7 @@ import { CategoriesCircle } from "../atoms/CategoriesCircle";
 
 export const CategoriesBar = () => {
   return (
-    <View className="flex-row justify-between align-middle self-center w-full my-2">
+    <View className="flex-row justify-between align-middle self-center w-full mt-2">
       <CategoriesCircle
         text="Free"
         color="white"
