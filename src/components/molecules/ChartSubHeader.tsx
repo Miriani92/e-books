@@ -12,7 +12,7 @@ export const ChartSubHeader: React.FC<any> = (props) => {
   const { isFilter, hanldeGetActiveSubHeader } = props;
   if (!isFilter)
     return (
-      <View className="h-8 bg-yellow-dark mt-2 justify-center rounded-md">
+      <View className="h-8 bg-yellow-dark my-2 justify-center ">
         <Text className="self-center ">READ MORE TO BE IN CHART</Text>
       </View>
     );
@@ -22,7 +22,7 @@ export const ChartSubHeader: React.FC<any> = (props) => {
     setActiveStyle({ ...activeStyle, activeIndex: ind });
   };
   return (
-    <View className="flex-row w-full mt-2">
+    <View className="flex-row w-full my-2">
       {chartFilterButtonsData.map((item) => {
         const { text, id, title } = item;
         return (

@@ -41,7 +41,7 @@ export const Chart: React.FC<any> = (props) => {
   };
 
   return (
-    <View>
+    <View className="bg-white-slate shadow-lg rounded-lg mb-8">
       <FlatList
         ListHeaderComponent={
           <ChartHeader
