@@ -4,7 +4,8 @@ import { ChartSubHeader } from "./ChartSubHeader";
 import React from "react";
 
 export const ChartHeader: React.FC<any> = (props) => {
-  const { onChangeHeader, activeIndex, isFilter } = props;
+  const { onChangeHeader, activeIndex, isFilter, hanldeGetActiveSubHeader } =
+    props;
 
   const leftButtonTitle = "Reader\nChart";
   const middleButtonTitle = "10 Most\nActive\nReader";
@@ -14,8 +15,8 @@ export const ChartHeader: React.FC<any> = (props) => {
     background: "bg-pink-dark",
     textColor: "text-white-slate",
   };
-  const hanldeOnPress = (ind: number) => {
-    let arg = {};
+  const hanldeOnPress = (ind: number, headerName: string) => {
+    let arg: any = {};
     if (ind == 0) {
       arg = { filter: false, activeIndex: ind };
     }
@@ -25,6 +26,7 @@ export const ChartHeader: React.FC<any> = (props) => {
     if (ind == 2) {
       arg = { filter: true, activeIndex: ind };
     }
+    arg.headerName = headerName;
     onChangeHeader(arg);
   };
   return (
@@ -34,22 +36,25 @@ export const ChartHeader: React.FC<any> = (props) => {
           activeStyle={0 === activeIndex && activeStyleObj}
           curvePosition="tl"
           text={leftButtonTitle}
-          onPress={() => hanldeOnPress(0)}
+          onPress={() => hanldeOnPress(0, "readerList")}
         />
         <ChartButton
           activeStyle={1 === activeIndex && activeStyleObj}
           isMiddle={true}
           text={middleButtonTitle}
-          onPress={() => hanldeOnPress(1)}
+          onPress={() => hanldeOnPress(1, "mostActive")}
         />
         <ChartButton
           activeStyle={2 === activeIndex && activeStyleObj}
           curvePosition="tr"
           text={rightButtonTitle}
-          onPress={() => hanldeOnPress(2)}
+          onPress={() => hanldeOnPress(2, "mostPopular")}
         />
       </View>
-      <ChartSubHeader isFilter={isFilter} />
+      <ChartSubHeader
+        isFilter={isFilter}
+        hanldeGetActiveSubHeader={hanldeGetActiveSubHeader}
+      />
     </>
   );
 };

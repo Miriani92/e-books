@@ -1,19 +1,45 @@
-import React, { useState } from "react";
-import { View, Text, FlatList } from "react-native";
+import React, { useState, useCallback } from "react";
+import { View, FlatList } from "react-native";
 import { chartData } from "../../constants/data";
 import { ChartHeader } from "../molecules/ChartHeader";
-export const Chart = () => {
-  const [{ filter, acitiveIndex }, setIsFilters] = useState({
+import { ChartList } from "../molecules/ChartList";
+
+export const Chart: React.FC<any> = (props) => {
+  const { data } = props;
+  const [{ activeSubIndex, activeSubHeader }, setActiveSubHeader] = useState({
+    activeSubIndex: 0,
+    activeSubHeader: "weekly",
+  });
+  const [{ filter, acitiveIndex, activeHeader }, setIsFilters] = useState({
     filter: false,
     acitiveIndex: 0,
+    activeHeader: "readerList",
   });
+
+  const handleGetActiveList = useCallback(() => {
+    const activeList =
+      data[activeHeader][activeSubHeader] || data[activeHeader];
+    console.log(activeList);
+    return activeList;
+  }, [activeSubHeader, acitiveIndex]);
+
   const flatListSeparator = () => {
     return <View className="mr-4"></View>;
   };
+
   const handleChangeHeader = (arg: any) => {
-    const { activeIndex, filter } = arg;
-    setIsFilters({ acitiveIndex: activeIndex, filter: filter });
+    const { activeIndex, filter, headerName } = arg;
+    setIsFilters({
+      acitiveIndex: activeIndex,
+      filter: filter,
+      activeHeader: headerName,
+    });
   };
+  const hanldeGetActiveSubHeader = (arg: any) => {
+    const { activeSubIndex, activeSubHeader } = arg;
+    setActiveSubHeader({ activeSubHeader, activeSubIndex });
+  };
+
   return (
     <View>
       <FlatList
@@ -22,12 +48,13 @@ export const Chart = () => {
             onChangeHeader={handleChangeHeader}
             activeIndex={acitiveIndex}
             isFilter={filter}
+            hanldeGetActiveSubHeader={hanldeGetActiveSubHeader}
           />
         }
         ItemSeparatorComponent={flatListSeparator}
-        data={chartData}
+        data={handleGetActiveList()}
         keyExtractor={(item: any) => item.id}
-        renderItem={({ item }) => <Text>{item.title}</Text>}
+        renderItem={({ item }) => <ChartList {...item} />}
       />
     </View>
   );

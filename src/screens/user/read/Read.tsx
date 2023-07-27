@@ -9,8 +9,10 @@ import { BookCarousel } from "../../../components";
 import { MyBooksData } from "../../../constants/data";
 import { ExploreBanner } from "../../../components";
 import { Chart } from "../../../components";
+import { useAppSelector } from "../../../hooks/app/useStore";
 
 export const Read = () => {
+  const chartData = useAppSelector((state) => state.readerChart);
   const navigation = useNavigation<any>();
   const handleNavigateMyBooks = () => {
     navigation.push("MyBooks");
@@ -41,7 +43,7 @@ export const Read = () => {
         </View>
         <BookCarousel data={MyBooksData} />
         <ExploreBanner />
-        <Chart />
+        <Chart data={chartData} />
       </ScreenContainer>
     </ScrollView>
   );

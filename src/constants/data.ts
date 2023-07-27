@@ -115,17 +115,189 @@ export const chartFilterButtonsData = [
   {
     id: 0,
     text: "week",
+    title: "weekly",
   },
   {
     id: 1,
     text: "month",
+    title: "monthly",
   },
   {
     id: 2,
     text: "year",
+    title: "yearly",
   },
   {
     id: 3,
     text: "all time",
+    title: "allTime",
+  },
+];
+
+export const mostPopular = {
+  weekly: [
+    {
+      id: 0,
+      data: "week",
+      title: "most_popular",
+    },
+    {
+      id: 1,
+      data: "week",
+      title: "most_popular",
+    },
+
+    {
+      id: 2,
+      data: "week",
+      title: "most_popular",
+    },
+  ],
+  monthly: [
+    {
+      id: 0,
+      data: "month",
+      title: "most_popular",
+    },
+    {
+      id: 1,
+      data: "month",
+      title: "most_popular",
+    },
+
+    {
+      id: 2,
+      data: "month",
+      title: "most_popular",
+    },
+  ],
+  yearly: [
+    {
+      id: 0,
+      data: "yearly",
+      title: "most_popular",
+    },
+    {
+      id: 1,
+      data: "yearly",
+      title: "most_popular",
+    },
+
+    {
+      id: 2,
+      data: "yearly",
+      title: "most_popular",
+    },
+  ],
+  allTime: [
+    {
+      id: 0,
+      data: "alltime",
+      title: "most_popular",
+    },
+    {
+      id: 1,
+      data: "alltime",
+      title: "most_popular",
+    },
+
+    {
+      id: 2,
+      data: "alltime",
+      title: "most_popular",
+    },
+  ],
+};
+
+export const mostActive = {
+  weekly: [
+    {
+      id: 0,
+      data: "week",
+      title: "most_active",
+    },
+    {
+      id: 1,
+      data: "week",
+      title: "most_active",
+    },
+
+    {
+      id: 2,
+      data: "week",
+      title: "most_active",
+    },
+  ],
+  monthly: [
+    {
+      id: 0,
+      data: "month",
+      title: "most_active",
+    },
+    {
+      id: 1,
+      data: "month",
+      title: "most_active",
+    },
+
+    {
+      id: 2,
+      data: "month",
+      title: "most_active",
+    },
+  ],
+  yearly: [
+    {
+      id: 0,
+      data: "yearly",
+      title: "most_active",
+    },
+    {
+      id: 1,
+      data: "yearly",
+      title: "most_active",
+    },
+
+    {
+      id: 2,
+      data: "yearly",
+      title: "most_active",
+    },
+  ],
+  allTime: [
+    {
+      id: 0,
+      data: "alltime",
+      title: "most_active",
+    },
+    {
+      id: 1,
+      data: "alltime",
+      title: "most_active",
+    },
+
+    {
+      id: 2,
+      data: "alltime",
+      title: "most_active",
+    },
+  ],
+};
+
+export const readerList = [
+  {
+    id: 0,
+    data: "readerOne",
+    title: "reader",
+  },
+  {
+    id: 1,
+    data: "readerTwo",
+    title: "reader",
+  },
+  {
+    id: 2,
+    data: "readerThree",
+    title: "reader",
   },
 ];
