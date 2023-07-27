@@ -10,3 +10,4 @@ export { WeeklyBestSellers as WeeklyBestSellersScreen } from "./user/explore/nes
 
 export { MyBooks as MyBooksScreen } from "./user/read/nested/MyBooks";
 export { NewBooks as NewBooksScreen } from "./user/read/nested/NewBooks";
+export { BookOfTheDay as BookOfTheDayScreen } from "./user/read/nested/BookOfTheDay";

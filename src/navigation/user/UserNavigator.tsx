@@ -7,6 +7,7 @@ import {
   CategoriesScreen,
   FavoritesScreen,
   NewBooksScreen,
+  BookOfTheDayScreen,
 } from "../../screens";
 
 export const UserNavigator = () => {
@@ -39,6 +40,11 @@ export const UserNavigator = () => {
         name="NewBooks"
         options={{ headerShown: true }}
         component={NewBooksScreen}
+      ></Stack.Screen>
+      <Stack.Screen
+        name="BookOfTheDay"
+        options={{ headerShown: true }}
+        component={BookOfTheDayScreen}
       ></Stack.Screen>
     </Stack.Navigator>
   );

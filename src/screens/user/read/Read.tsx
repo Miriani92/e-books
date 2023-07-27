@@ -10,6 +10,7 @@ import { MyBooksData } from "../../../constants/data";
 import { ExploreBanner } from "../../../components";
 import { Chart } from "../../../components";
 import { useAppSelector } from "../../../hooks/app/useStore";
+import { BookOfTheDayComponent } from "../../../components";
 
 export const Read = () => {
   const chartData = useAppSelector((state) => state.readerChart);
@@ -44,6 +45,7 @@ export const Read = () => {
         <BookCarousel data={MyBooksData} />
         <ExploreBanner />
         <Chart data={chartData} />
+        <BookOfTheDayComponent />
       </ScreenContainer>
     </ScrollView>
   );
