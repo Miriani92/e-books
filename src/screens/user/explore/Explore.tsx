@@ -1,12 +1,18 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
+import { Text } from "react-native";
+import {
+  bestSellingBooksData,
+  myAudibleBooksData,
+} from "../../../constants/data";
+import { MyBooksData } from "../../../constants/data";
 import { ScreenContainer } from "../../../components/molecules/ScreenContainer";
 import { useNavigation } from "@react-navigation/native";
 import { CategoriesBar } from "../../../components";
 import { ExploreBanner } from "../../../components";
-import { WeeklyBestSeller } from "../../../components";
+import { BooksContainer as WeeklyBestSeller } from "../../../components";
+import { BooksContainer as NewBooksContainer } from "../../../components";
 import { SeeAllButton } from "../../../components";
-import { ScrollView } from "react-native-gesture-handler";
 
 export const Explore = () => {
   const navigation = useNavigation<any>();
@@ -25,7 +31,20 @@ export const Explore = () => {
         />
         <CategoriesBar />
         <ExploreBanner />
-        <WeeklyBestSeller />
+        <WeeklyBestSeller
+          navigateToScreen="BestSellers"
+          data={bestSellingBooksData}
+          headerText="WEEKLY BESTSELLERS"
+          headerColor="bg-slate-300"
+          listColor="bg-grey-light"
+        />
+        <NewBooksContainer
+          navigateToScreen="NewBooks"
+          data={MyBooksData}
+          headerText="NEW BOOKS"
+          headerColor="bg-blue-dark"
+          listColor="bg-green-dark"
+        />
       </ScreenContainer>
     </ScrollView>
   );

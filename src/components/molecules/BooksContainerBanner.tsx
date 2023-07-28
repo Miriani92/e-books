@@ -4,17 +4,18 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-export const WeeklyBestSellerBanner = () => {
+export const BooksContainerBanner: React.FC<any> = (props) => {
+  const { headerColor, headerText, navigateToScreen } = props;
   const navigation = useNavigation<any>();
   const handleNavigateToBestSeller = () => {
-    navigation.push("BestSellers");
+    navigation.push(navigateToScreen);
   };
   return (
     <TouchableOpacity
       onPress={handleNavigateToBestSeller}
-      className="w-full  bg-sky-dark  p-4 rounded-tl-lg rounded-tr-lg h-20 justify-between"
+      className={`w-full  ${headerColor}  p-4 rounded-tl-lg rounded-tr-lg h-20 justify-between`}
     >
-      <Text className="text-white-slate">WEEKLY BESTSELLERS</Text>
+      <Text className="text-white-slate">{headerText}</Text>
       <SeeAllButton textColor="text-white-slate" iconColor="#ffffff" />
     </TouchableOpacity>
   );

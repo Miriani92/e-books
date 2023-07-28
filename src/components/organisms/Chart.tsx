@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from "react";
 import { View, FlatList } from "react-native";
-import { chartData } from "../../constants/data";
 import { ChartHeader } from "../molecules/ChartHeader";
 import { ChartList } from "../molecules/ChartList";
 
