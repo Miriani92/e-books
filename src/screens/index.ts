@@ -11,5 +11,5 @@ export { WeeklyBestSellers as WeeklyBestSellersScreen } from "./user/explore/nes
 export { MyBooks as MyBooksScreen } from "./user/read/nested/MyBooks";
 export { NewBooks as NewBooksScreen } from "./user/shared/NewBooks";
 export { BookOfTheDay as BookOfTheDayScreen } from "./user/read/nested/BookOfTheDay";
-
 export { MyAudibleBooks as MyAudibleBooksScreen } from "./user/listen/nested/MyAudibleBooks";
+export { Book as BookScreen } from "./user/shared/Book";
