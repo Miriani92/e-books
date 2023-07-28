@@ -78,6 +78,32 @@ export const MyBooksData = [
     imageSource: MyBook4,
   },
 ];
+export const myAudibleBooksData = [
+  {
+    id: 0,
+    author: "Audible",
+    title: "Audible one",
+    imageSource: MyBook1,
+  },
+  {
+    id: 1,
+    author: "Audible ",
+    title: "Audible two",
+    imageSource: MyBook2,
+  },
+  {
+    id: 2,
+    author: "Audible",
+    title: "Audibl three",
+    imageSource: MyBook3,
+  },
+  {
+    id: 3,
+    author: "Audible",
+    title: "Audible four",
+    imageSource: MyBook4,
+  },
+];
 
 export const chartData = [
   {

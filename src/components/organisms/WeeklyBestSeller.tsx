@@ -1,5 +1,5 @@
 import React from "react";
-import { View, FlatList, Image } from "react-native";
+import { View, FlatList } from "react-native";
 import { bestSellingBooksData } from "../../constants/data";
 import { WeeklyBestSellerBanner } from "../molecules/WeeklyBestSellerBanner";
 import { Book } from "../molecules/Book";

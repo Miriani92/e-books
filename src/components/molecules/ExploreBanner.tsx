@@ -4,17 +4,18 @@ import { bannerData } from "../../constants/data";
 
 export const ExploreBanner = () => {
   const flatListSeparator = () => {
-    return <View className="mr-4"></View>;
+    return <View className="w-4"></View>;
   };
   return (
-    <View className="my-8">
+    <View className="my-8  f-full">
       <FlatList
         ItemSeparatorComponent={flatListSeparator}
         data={bannerData}
         keyExtractor={(item: any) => item.id}
         horizontal
-        snapToInterval={330}
-        decelerationRate={0}
+        showsHorizontalScrollIndicator={false}
+        pagingEnabled
+        snapToInterval={320}
         renderItem={({ item }) => (
           <Image
             source={item.image}

@@ -9,5 +9,7 @@ export { Categories as CategoriesScreen } from "./user/explore/nested/Categories
 export { WeeklyBestSellers as WeeklyBestSellersScreen } from "./user/explore/nested/WeeklyBestSellers";
 
 export { MyBooks as MyBooksScreen } from "./user/read/nested/MyBooks";
-export { NewBooks as NewBooksScreen } from "./user/read/nested/NewBooks";
+export { NewBooks as NewBooksScreen } from "./user/shared/NewBooks";
 export { BookOfTheDay as BookOfTheDayScreen } from "./user/read/nested/BookOfTheDay";
+
+export { MyAudibleBooks as MyAudibleBooksScreen } from "./user/listen/nested/MyAudibleBooks";
