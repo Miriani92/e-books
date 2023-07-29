@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Image } from "react-native";
+import { Image } from "react-native";
+import { BookScreen } from "../../screens";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { HomeContainer } from "../../features";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -8,7 +9,6 @@ import { Ionicons } from "@expo/vector-icons";
 import { ReadNavigator } from "./nested/ReadNavigator";
 import { ListenNavigator } from "./nested/ListenNavigator";
 import { ExploreNavigator } from "./nested/ExploreNavigator";
-import { BookScreen } from "../../screens";
 import { MyBooksData } from "../../constants/data";
 
 export const TabNavigator = () => {
@@ -30,7 +30,7 @@ export const TabNavigator = () => {
         return <FontAwesome5 name="headphones" size={24} color={iconColor} />;
       }
       if (route.name === "SingleBook") {
-        // hadrcode book will change
+        // hardcoded -- needs to be changed
         return (
           <Image
             source={singleBookImage}
@@ -60,7 +60,11 @@ export const TabNavigator = () => {
     <Tab.Navigator screenOptions={setOptions}>
       <Tab.Screen name="Read" component={ReadNavigator}></Tab.Screen>
       <Tab.Screen name="Listen" component={ListenNavigator}></Tab.Screen>
-      <Tab.Screen name="SingleBook" component={BookScreen}></Tab.Screen>
+      <Tab.Screen
+        name="SingleBook"
+        options={{ tabBarLabel: "", tabBarStyle: { display: "none" } }}
+        component={BookScreen}
+      ></Tab.Screen>
       <Tab.Screen name="Explore" component={ExploreNavigator}></Tab.Screen>
       <Tab.Screen name="Parameters" component={HomeContainer}></Tab.Screen>
     </Tab.Navigator>
