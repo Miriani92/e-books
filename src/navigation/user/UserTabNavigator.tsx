@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Image } from "react-native";
 import { BookScreen } from "../../screens";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -10,8 +10,20 @@ import { ReadNavigator } from "./nested/ReadNavigator";
 import { ListenNavigator } from "./nested/ListenNavigator";
 import { ExploreNavigator } from "./nested/ExploreNavigator";
 import { MyBooksData } from "../../constants/data";
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from "react-native-reanimated";
 
 export const TabNavigator = () => {
+  const transitionValue = useSharedValue(800);
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ translateX: transitionValue.value }],
+    };
+  }, []);
+
   const singleBookImage = MyBooksData[1].imageSource;
   const Tab = createBottomTabNavigator();
   const setOptions = ({ route }) => ({
@@ -55,18 +67,23 @@ export const TabNavigator = () => {
     tabBarInactiveTintColor: "gray",
     headerShown: false,
   });
+  useEffect(() => {
+    transitionValue.value = withTiming(0, { duration: 800 });
+  }, []);
 
   return (
-    <Tab.Navigator screenOptions={setOptions}>
-      <Tab.Screen name="Read" component={ReadNavigator}></Tab.Screen>
-      <Tab.Screen name="Listen" component={ListenNavigator}></Tab.Screen>
-      <Tab.Screen
-        name="SingleBook"
-        options={{ tabBarLabel: "", tabBarStyle: { display: "none" } }}
-        component={BookScreen}
-      ></Tab.Screen>
-      <Tab.Screen name="Explore" component={ExploreNavigator}></Tab.Screen>
-      <Tab.Screen name="Parameters" component={HomeContainer}></Tab.Screen>
-    </Tab.Navigator>
+    <Animated.View style={[animatedStyle, { flex: 1 }]}>
+      <Tab.Navigator screenOptions={setOptions}>
+        <Tab.Screen name="Read" component={ReadNavigator}></Tab.Screen>
+        <Tab.Screen name="Listen" component={ListenNavigator}></Tab.Screen>
+        <Tab.Screen
+          name="SingleBook"
+          options={{ tabBarLabel: "", tabBarStyle: { display: "none" } }}
+          component={BookScreen}
+        ></Tab.Screen>
+        <Tab.Screen name="Explore" component={ExploreNavigator}></Tab.Screen>
+        <Tab.Screen name="Parameters" component={HomeContainer}></Tab.Screen>
+      </Tab.Navigator>
+    </Animated.View>
   );
 };
