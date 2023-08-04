@@ -7,6 +7,10 @@ import { Button } from "../../components";
 import { ErrorMessage } from "../../components";
 import { Ionicons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
+import { uploadBytesResumable, getDownloadURL, ref } from "firebase/storage";
+import { storage } from "../../utils/firebase";
+
+//here the databse imports
 
 type SignUpProps = {
   handleNavigateToSignIn: () => void;
@@ -36,11 +40,44 @@ export const SignUp: React.FC<SignUpProps> = ({
   isSignedIn,
 }) => {
   const [fieldIsTouched, setIsFieldTouched] = useState(false);
-  const [imagePath, setImagePath] = useState("");
+  const [imageURI, setImageURI] = useState<any>();
   const { name, email, password, onInputChange, onSubmit } = formData;
 
+  // image apload logic here
+  const uploadImageToDatabase = async (uri: any, imageRef: any) => {
+    const blob: any = await new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.onload = function () {
+        resolve(xhr.response);
+      };
+      xhr.onerror = function (e) {
+        console.log(e);
+        reject(new TypeError("Network request failed"));
+      };
+      xhr.responseType = "blob";
+      xhr.open("GET", uri, true);
+      xhr.send(null);
+    });
+
+    const fileRef = ref(storage, imageRef);
+    await uploadBytesResumable(fileRef, blob);
+
+    blob.close();
+
+    // return await getDownloadURL(fileRef);
+  };
+  const handleUpload = async () => {
+    try {
+      const uniqueIdForAvatar = new Date().getTime();
+      await uploadImageToDatabase(imageURI, uniqueIdForAvatar.toString());
+    } catch (error) {
+      console.log("error_", error.message);
+    }
+  };
+
+  // image apload logic here
+
   const handleImagePick = async () => {
-    // No permissions request is necessary for launching the image library
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
@@ -48,9 +85,8 @@ export const SignUp: React.FC<SignUpProps> = ({
       quality: 1,
     });
 
-    console.log("image_path", result);
     if (!result.canceled) {
-      setImagePath(result.assets[0].uri);
+      setImageURI(result?.assets[0]?.uri);
     }
   };
 
@@ -130,9 +166,12 @@ export const SignUp: React.FC<SignUpProps> = ({
         textColor="text-white-slate"
         icon={"chevron-right"}
         isLoading={isLoading}
-        onPress={({ name, email, password }) => {
+        onPress={async ({ name, email, password }) => {
           setIsFieldTouched(false);
-          onSubmit({ name, email, password });
+          await onSubmit({ name, email, password });
+          console.log("here_____");
+
+          handleUpload();
         }}
       />
       <View className="flex-row mt-4 align-middle justify-center ">
