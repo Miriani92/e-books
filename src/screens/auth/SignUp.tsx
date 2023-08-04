@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 import { FormData } from "../../features/auth/SignUpContainer";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, Keyboard } from "react-native";
 import { View, Text } from "react-native";
 import { FormInput } from "../../components";
 import { Button } from "../../components";
 import { ErrorMessage } from "../../components";
 import { Ionicons } from "@expo/vector-icons";
 import * as ImagePicker from "expo-image-picker";
-import { uploadBytesResumable, getDownloadURL, ref } from "firebase/storage";
-import { storage } from "../../utils/firebase";
-
-//here the databse imports
 
 type SignUpProps = {
   handleNavigateToSignIn: () => void;
@@ -53,6 +49,7 @@ export const SignUp: React.FC<SignUpProps> = ({
 
     if (!result.canceled) {
       setImageURI(result?.assets[0]?.uri);
+      Keyboard.dismiss();
     }
   };
 

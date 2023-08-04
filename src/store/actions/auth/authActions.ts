@@ -19,21 +19,20 @@ export const onRegister = createAsyncThunk(
     try {
       await createUserWithEmailAndPassword(auth, email, password);
 
-      const storedImageURL = await uploadImageToDatabase(imageURI);
-      await updateProfile(auth.currentUser, {
-        displayName: name,
-        photoURL: storedImageURL,
-      });
+      const updatedUser: any = { displayName: name, photoURL: null };
 
-      console.log("usr_Updataed__");
+      if (imageURI) {
+        const storedImageURL = await uploadImageToDatabase(imageURI);
+        updatedUser.photoURL = storedImageURL;
+      }
+      await updateProfile(auth.currentUser, updatedUser);
+
       const {
         email: registeredEmail,
         displayName,
         uid,
         photoURL,
       } = auth.currentUser;
-
-      console.log("usr_Updataed__");
 
       return { email: registeredEmail, displayName, uid, photoURL };
     } catch (error) {
