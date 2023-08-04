@@ -6,7 +6,7 @@ import { FilterContainer } from "../../../features";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
-  withTiming,
+  withSpring,
 } from "react-native-reanimated";
 
 export const ListenNavigator = () => {
@@ -19,7 +19,7 @@ export const ListenNavigator = () => {
   const Drawer = createDrawerNavigator();
 
   useEffect(() => {
-    transitionValue.value = withTiming(0, { duration: 500 });
+    transitionValue.value = withSpring(0);
   }, []);
   return (
     <Animated.View style={[animatedStyle, { flex: 1 }]}>

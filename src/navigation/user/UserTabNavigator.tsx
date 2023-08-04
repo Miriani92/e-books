@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { LogBox } from "react-native";
 import { Image } from "react-native";
 import { BookScreen } from "../../screens";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -68,6 +69,7 @@ export const TabNavigator = () => {
     headerShown: false,
   });
   useEffect(() => {
+    LogBox.ignoreLogs(["VirtualizedLists should never be nested"]);
     transitionValue.value = withTiming(0, { duration: 800 });
   }, []);
 

@@ -1,10 +1,7 @@
 import React from "react";
 import { ScrollView } from "react-native-gesture-handler";
 import { Text } from "react-native";
-import {
-  bestSellingBooksData,
-  myAudibleBooksData,
-} from "../../../constants/data";
+import { bestSellingBooksData } from "../../../constants/data";
 import { MyBooksData } from "../../../constants/data";
 import { ScreenContainer } from "../../../components/molecules/ScreenContainer";
 import { useNavigation } from "@react-navigation/native";

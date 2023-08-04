@@ -4,7 +4,7 @@ import { ExploreScreenContainer } from "../../../features/user/tabs/ExploreScree
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
-  withTiming,
+  withSpring,
 } from "react-native-reanimated";
 
 export const ExploreNavigator = () => {
@@ -12,11 +12,12 @@ export const ExploreNavigator = () => {
   const animatedStyle = useAnimatedStyle(() => {
     return {
       transform: [{ translateY: transitionValue.value }],
+      marginTop: 50,
     };
   }, []);
   const Stack = createNativeStackNavigator<any>();
   useEffect(() => {
-    transitionValue.value = withTiming(0, { duration: 500 });
+    transitionValue.value = withSpring(0);
   }, []);
   return (
     <Animated.View style={[animatedStyle, { flex: 1 }]}>
