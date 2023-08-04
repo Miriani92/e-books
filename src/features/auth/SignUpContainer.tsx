@@ -47,10 +47,11 @@ export const SignUpContainer = () => {
     name: string;
     email: string;
     password: string;
+    imageURI: any;
   }) {
     setIsEditing({ name: false, email: false, password: false });
-    const { name, email, password } = data;
-    await dispatch(onRegister({ name, email, password }));
+    const { name, email, password, imageURI } = data;
+    await dispatch<any>(onRegister({ name, email, password, imageURI }));
     return isSigndIn;
   }
   const handleNavigateToSignIn = () => {

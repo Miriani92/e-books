@@ -24,10 +24,10 @@ export const useForm = ({
     });
   };
 
-  const onSubmit = async () => {
+  const onSubmit = async (data: any) => {
     let isSuccess: any;
     if (handleOnSubmit) {
-      isSuccess = await handleOnSubmit(formData);
+      isSuccess = await handleOnSubmit(data || formData);
       isSuccess && setFormData({ name: "", email: "", password: "" });
     }
   };

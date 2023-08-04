@@ -25,7 +25,9 @@ export const SignInContainer = () => {
     password: boolean;
   }>({ email: false, password: false });
 
-  const { loading, error, isSigndIn } = useAppSelector((state) => state.auth);
+  const { loading, error, isSigndIn } = useAppSelector<any>(
+    (state) => state.auth
+  );
   const dispatch = useAppDispatch();
   const navigation = useNavigation<any>();
 
@@ -41,7 +43,7 @@ export const SignInContainer = () => {
   async function handleOnSubmit(data: { email: string; password: string }) {
     setIsEditing({ email: false, password: false });
     const { email, password } = data;
-    await dispatch(handleSignIn({ email, password }));
+    await dispatch<any>(handleSignIn({ email, password }));
     return isSigndIn;
   }
   const handleValidateEmail = (email: string) => {

@@ -40,42 +40,8 @@ export const SignUp: React.FC<SignUpProps> = ({
   isSignedIn,
 }) => {
   const [fieldIsTouched, setIsFieldTouched] = useState(false);
-  const [imageURI, setImageURI] = useState<any>();
+  const [imageURI, setImageURI] = useState<any>("");
   const { name, email, password, onInputChange, onSubmit } = formData;
-
-  // image apload logic here
-  const uploadImageToDatabase = async (uri: any, imageRef: any) => {
-    const blob: any = await new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
-      xhr.onload = function () {
-        resolve(xhr.response);
-      };
-      xhr.onerror = function (e) {
-        console.log(e);
-        reject(new TypeError("Network request failed"));
-      };
-      xhr.responseType = "blob";
-      xhr.open("GET", uri, true);
-      xhr.send(null);
-    });
-
-    const fileRef = ref(storage, imageRef);
-    await uploadBytesResumable(fileRef, blob);
-
-    blob.close();
-
-    // return await getDownloadURL(fileRef);
-  };
-  const handleUpload = async () => {
-    try {
-      const uniqueIdForAvatar = new Date().getTime();
-      await uploadImageToDatabase(imageURI, uniqueIdForAvatar.toString());
-    } catch (error) {
-      console.log("error_", error.message);
-    }
-  };
-
-  // image apload logic here
 
   const handleImagePick = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
@@ -100,6 +66,7 @@ export const SignUp: React.FC<SignUpProps> = ({
 
   const showOnSubmitError =
     errorMessage && !isSignedIn && !fieldIsTouched && !isLoading;
+
   return (
     <View className="flex-1 w-11/12 align-middle justify-center  self-center">
       <ErrorMessage errorMessage={showOnSubmitError && errorMessage} />
@@ -166,12 +133,14 @@ export const SignUp: React.FC<SignUpProps> = ({
         textColor="text-white-slate"
         icon={"chevron-right"}
         isLoading={isLoading}
-        onPress={async ({ name, email, password }) => {
+        onPress={() => {
+          onSubmit({
+            name,
+            email,
+            password,
+            imageURI,
+          });
           setIsFieldTouched(false);
-          await onSubmit({ name, email, password });
-          console.log("here_____");
-
-          handleUpload();
         }}
       />
       <View className="flex-row mt-4 align-middle justify-center ">

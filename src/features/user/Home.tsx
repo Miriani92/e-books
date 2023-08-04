@@ -13,7 +13,7 @@ export const HomeContainer = () => {
   const dispatch = useAppDispatch();
 
   const handleLogOut = () => {
-    dispatch(handleSignOut());
+    dispatch<any>(handleSignOut());
   };
   const navigateToDashboard = () => {
     navigation.push("Dashboard");

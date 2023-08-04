@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { signOut } from "firebase/auth";
+import { uploadImageToDatabase } from "../../utils/auth.utils";
 
 export const onRegister = createAsyncThunk(
   "auth/register",
@@ -11,20 +12,30 @@ export const onRegister = createAsyncThunk(
       name,
       email,
       password,
-    }: { name: string; email: string; password: string },
+      imageURI,
+    }: { name: string; email: string; password: string; imageURI: any },
     { rejectWithValue }
   ) => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
+
+      const storedImageURL = await uploadImageToDatabase(imageURI);
       await updateProfile(auth.currentUser, {
         displayName: name,
+        photoURL: storedImageURL,
       });
-      const userData = auth.currentUser;
-      const { email: registeredEmail, displayName, uid } = userData;
 
-      console.log("email:", email, "displayName:", displayName);
+      console.log("usr_Updataed__");
+      const {
+        email: registeredEmail,
+        displayName,
+        uid,
+        photoURL,
+      } = auth.currentUser;
 
-      return { email: registeredEmail, displayName, uid };
+      console.log("usr_Updataed__");
+
+      return { email: registeredEmail, displayName, uid, photoURL };
     } catch (error) {
       rejectWithValue({ message: " Couldn't register the user" });
     }
