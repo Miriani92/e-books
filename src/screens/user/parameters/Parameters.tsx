@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, Text } from "react-native";
-import { Button } from "../../components";
-import { handleSignOut } from "../../store/actions/auth/authActions";
-import { useAppDispatch } from "../../hooks/app/useStore";
-import { useAppSelector } from "../../hooks/app/useStore";
+import { Button } from "../../../components";
+import { handleSignOut } from "../../../store/actions/auth/authActions";
+import { useAppDispatch } from "../../../hooks/app/useStore";
+import { useAppSelector } from "../../../hooks/app/useStore";
 
-export const HomeContainer = () => {
+export const Parameters = () => {
   const navigation = useNavigation<any>();
   const { currentUser }: any = useAppSelector((state) => state.auth);
 

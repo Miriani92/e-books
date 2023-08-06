@@ -3,7 +3,6 @@ import { LogBox } from "react-native";
 import { Image } from "react-native";
 import { BookScreen } from "../../screens";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { HomeContainer } from "../../features";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
@@ -11,6 +10,7 @@ import { ReadNavigator } from "./nested/ReadNavigator";
 import { ListenNavigator } from "./nested/ListenNavigator";
 import { ExploreNavigator } from "./nested/ExploreNavigator";
 import { MyBooksData } from "../../constants/data";
+import { ParametersNavigator } from "./nested/ParametersNavigator";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -84,7 +84,10 @@ export const TabNavigator = () => {
           component={BookScreen}
         ></Tab.Screen>
         <Tab.Screen name="Explore" component={ExploreNavigator}></Tab.Screen>
-        <Tab.Screen name="Parameters" component={HomeContainer}></Tab.Screen>
+        <Tab.Screen
+          name="Parameters"
+          component={ParametersNavigator}
+        ></Tab.Screen>
       </Tab.Navigator>
     </Animated.View>
   );

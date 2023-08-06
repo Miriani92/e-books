@@ -14,3 +14,4 @@ export { BookOfTheDay as BookOfTheDayScreen } from "./user/read/nested/BookOfThe
 export { MyAudibleBooks as MyAudibleBooksScreen } from "./user/listen/nested/MyAudibleBooks";
 export { Book as BookScreen } from "./user/shared/Book";
 export { Dashboard as DashboardScreen } from "./dashboard/Dashboard";
+export { Parameters as ParametersScreen } from "./user/parameters/Parameters";
