@@ -39,9 +39,17 @@ export const SignIn: React.FC<SignInProps> = ({
     password.length > 0;
   const showOnSubmitError =
     errorMessage && !isSignedIn && !fieldIsTouched && !isLoading;
+
+  const onSubmitError = showOnSubmitError && email.length > 1 && errorMessage;
+  const emailError =
+    validateMessage.email && !isEditing.email && validateMessage.email;
+  const passwordError =
+    validateMessage.password && !isEditing.password && validateMessage.password;
+  const errorProps = onSubmitError || emailError || passwordError;
+
   return (
     <View className="flex-1 w-11/12 align-middle justify-center  self-center">
-      <ErrorMessage errorMessage={showOnSubmitError && errorMessage} />
+      <ErrorMessage errorMessage={errorProps} />
       <FormInput
         name="email"
         placeHolder="Email"
@@ -54,9 +62,6 @@ export const SignIn: React.FC<SignInProps> = ({
         setIsTouched={setIsFieldTouched}
         isTouched={fieldIsTouched}
       />
-      {validateMessage.email && !isEditing.email && (
-        <ErrorMessage errorMessage={validateMessage.email} />
-      )}
       <FormInput
         name="password"
         value={password}
@@ -69,17 +74,14 @@ export const SignIn: React.FC<SignInProps> = ({
         setIsTouched={setIsFieldTouched}
         isTouched={fieldIsTouched}
       />
-      {validateMessage.password && !isEditing.password && (
-        <ErrorMessage errorMessage={validateMessage.password} />
-      )}
       <Button
         isDisabled={!isFieldsValidated}
         text="NEXT"
         style="bg-blue-dark mt-16"
         textColor="text-white-slate"
-        onPress={({ email, password }) => {
-          setIsFieldTouched(false);
+        onPress={() => {
           onSubmit({ email, password });
+          setIsFieldTouched(false);
         }}
         isLoading={isLoading}
         icon={"chevron-right"}

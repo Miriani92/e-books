@@ -45,7 +45,7 @@ export const FormInput: React.FC<InputProps> = ({
         return { ...state, [name]: false };
       });
       onValidate(value);
-    }, 500);
+    }, 1500);
 
     handleTextChange(value, name);
   }, []);

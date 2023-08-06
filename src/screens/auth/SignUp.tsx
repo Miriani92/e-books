@@ -64,9 +64,18 @@ export const SignUp: React.FC<SignUpProps> = ({
   const showOnSubmitError =
     errorMessage && !isSignedIn && !fieldIsTouched && !isLoading;
 
+  const onSubmitError = showOnSubmitError && email.length > 1 && errorMessage;
+  const nameError =
+    validateMessage.name && !isEditing.name && validateMessage.name;
+  const emailError =
+    validateMessage.email && !isEditing.email && validateMessage.email;
+  const passwordError =
+    validateMessage.password && !isEditing.password && validateMessage.password;
+  const errorProps = onSubmitError || emailError || passwordError || nameError;
+
   return (
     <View className="flex-1 w-11/12 align-middle justify-center  self-center">
-      <ErrorMessage errorMessage={showOnSubmitError && errorMessage} />
+      <ErrorMessage errorMessage={errorProps} />
       <FormInput
         name="name"
         placeHolder="Name"
@@ -80,9 +89,9 @@ export const SignUp: React.FC<SignUpProps> = ({
         isTouched={fieldIsTouched}
       />
 
-      {validateMessage.name && !isEditing.name && (
+      {/* {validateMessage.name && !isEditing.name && (
         <ErrorMessage errorMessage={validateMessage.name} />
-      )}
+      )} */}
       <FormInput
         name="email"
         placeHolder="Email"
@@ -95,10 +104,6 @@ export const SignUp: React.FC<SignUpProps> = ({
         setIsTouched={setIsFieldTouched}
         isTouched={fieldIsTouched}
       />
-
-      {validateMessage.email && !isEditing.email && (
-        <ErrorMessage errorMessage={validateMessage.email} />
-      )}
       <FormInput
         name="password"
         placeHolder="Password"
@@ -111,9 +116,6 @@ export const SignUp: React.FC<SignUpProps> = ({
         setIsTouched={setIsFieldTouched}
         isTouched={fieldIsTouched}
       />
-      {validateMessage.password && !isEditing.password && (
-        <ErrorMessage errorMessage={validateMessage.password} />
-      )}
       <TouchableOpacity
         onPress={handleImagePick}
         className="w-12 h-12 rounded-full mt-4  self-center bg-grey-dark justify-center"
