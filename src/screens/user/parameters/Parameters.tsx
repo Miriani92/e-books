@@ -20,7 +20,7 @@ export const Parameters = () => {
   };
 
   return (
-    <View className="flex-1 w-full align-center justify-center ">
+    <View className="flex-1 w-full align-center justify-center">
       <Text className="text-center font-bold mb-2 ">
         User Email: {currentUser.email}
       </Text>
