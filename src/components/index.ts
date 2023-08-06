@@ -14,3 +14,4 @@ export { Book } from "./molecules/Book";
 export { BookCarousel } from "./molecules/BookCarousel";
 export { Chart } from "./organisms/Chart";
 export { BookOfTheDayComponent } from "./organisms/BookOfTheDayComponent";
+export { ParametersHeader } from "./molecules/ParametersHeader";
