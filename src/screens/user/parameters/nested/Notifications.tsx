@@ -11,7 +11,7 @@ export const Notifications: React.FC<any> = ({ navigation }) => {
   return (
     <SafeAreaView className="w-11/12  justify-between flex-row self-center">
       <View className="flex-row ">
-        <Ionicons name="notifications" size={24} color=" #334155" />
+        <Ionicons name="notifications" size={24} color="black" />
         <Text className="ml-4 self-center font-bold text-base">{header}</Text>
       </View>
       <TouchableOpacity onPress={handleCloseDrawer}>

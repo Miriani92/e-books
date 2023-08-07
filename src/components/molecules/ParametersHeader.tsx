@@ -22,7 +22,7 @@ export const ParametersHeader: React.FC<any> = ({
           </Text>
         </View>
         <TouchableOpacity onPress={openDrawer}>
-          <Ionicons name="notifications" size={26} color=" #334155" />
+          <Ionicons name="notifications" size={26} color="black" />
         </TouchableOpacity>
       </View>
     </SafeAreaView>

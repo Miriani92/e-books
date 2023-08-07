@@ -6,13 +6,13 @@ import { NotificationsScreen } from "../../../screens";
 
 export const ParametersNavigator = () => {
   const Drawer = createDrawerNavigator();
-  const screenName = "Parameters";
+  const screenName = "Home";
 
   return (
     <Drawer.Navigator
       screenOptions={{
         header: (props: any) => {
-          return <ParametersHeader screenName={screenName} {...props} />;
+          return <ParametersHeader screenName="Parameters" {...props} />;
         },
         drawerPosition: "right",
         drawerType: "front",
