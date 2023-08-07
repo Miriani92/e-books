@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { Image } from "expo-image";
+import { View, Text, TouchableOpacity } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 
@@ -21,14 +22,15 @@ export const UserWall: React.FC<UserWallProps> = ({
   const greeting = "Hello";
   const readTimeHeader = "Reading Time";
   const streakHeader = "Reading Streak";
+
   return (
     <View className="w-11/12 p-2 self-center mt-4 bg-white-slate rounded-lg">
       <View className="flex-row justify-between mb-2 ">
         <View className="flex-row">
           <Image
-            src={photoURL}
+            source={photoURL}
             className="w-14 h-14 rounded-full"
-            resizeMode="cover"
+            contentFit="cover"
           />
           <View className="ml-4 justify-center">
             <Text>{greeting.toUpperCase()}</Text>
