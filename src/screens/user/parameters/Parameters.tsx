@@ -1,17 +1,42 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import { Button } from "../../../components";
 import { UserWall } from "../../../components";
 
-export const Parameters: React.FC<any> = ({
+type ParametersProps = {
+  navigateToDashboard: () => void;
+  handleSignOut: () => void;
+  currentUser: {
+    displayName: string;
+    email: string;
+    uid: string;
+    photoURL: any;
+  };
+  streak: number;
+  readTime: string;
+  navigateToUserInfo: () => void;
+};
+
+export const Parameters: React.FC<ParametersProps> = ({
   navigateToDashboard,
   handleSignOut,
   currentUser,
+  streak,
+  readTime,
+  navigateToUserInfo,
 }) => {
+  const { displayName: name, photoURL } = currentUser;
+
   return (
-    <View className="flex-1 w-full align-center justify-center">
-      <UserWall />
-      <Text className="text-center font-bold mb-2 ">
+    <ScrollView className="flex-1 w-full align-center ">
+      <UserWall
+        userName={name}
+        streak={streak}
+        readTime={readTime}
+        photoURL={photoURL}
+        navigateToUserInfo={navigateToUserInfo}
+      />
+      {/* <Text className="text-center font-bold mb-2 ">
         User Email: {currentUser.email}
       </Text>
       <Text className="text-center font-bold mb-2 ">
@@ -31,7 +56,7 @@ export const Parameters: React.FC<any> = ({
         text="GO TO DASBOARD"
         textColor="text-white-slate"
         style=" bg-grey-dark"
-      />
-    </View>
+      /> */}
+    </ScrollView>
   );
 };

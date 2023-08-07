@@ -4,14 +4,14 @@ import { onRegister } from "../../actions/auth/authActions";
 import { handleSignOut } from "../../actions/auth/authActions";
 import { handleSignIn } from "../../actions/auth/authActions";
 
-type InitialaState = {
+type InitialaStateProps = {
   currentUser: unknown;
   loading: boolean;
   isSigndIn: boolean;
   error: any;
 };
 
-const initialState: InitialaState = {
+const initialState: InitialaStateProps = {
   currentUser: {},
   isSigndIn: false,
   loading: false,

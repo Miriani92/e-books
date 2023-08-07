@@ -22,14 +22,19 @@ export const ParametersContainer = () => {
   const navigateToDashboard = () => {
     navigation.push("Dashboard");
   };
+  const handleNavigateUserInfo = () => {
+    navigation.push("UserInfo");
+  };
 
   const transitionValue = useSharedValue(100);
   const animatedStyle = useAnimatedStyle(() => {
     return {
       transform: [{ translateY: transitionValue.value }],
-      marginTop: 50,
     };
   }, []);
+  //======hardcode needs change======
+  const streak = 1;
+  const readTime = "5 day and 17 hour";
 
   useEffect(() => {
     transitionValue.value = withSpring(0);
@@ -41,6 +46,9 @@ export const ParametersContainer = () => {
         navigateToDashboard={navigateToDashboard}
         handleSignOut={handleLogOut}
         currentUser={currentUser}
+        streak={streak}
+        readTime={readTime}
+        navigateToUserInfo={handleNavigateUserInfo}
       />
     </Animated.View>
   );

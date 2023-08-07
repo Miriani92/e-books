@@ -7,7 +7,6 @@ export { Filter as FitlerScreen } from "./user/drawer/Filter";
 export { Explore as ExploreScreen } from "./user/explore/Explore";
 export { Categories as CategoriesScreen } from "./user/explore/nested/Categories";
 export { WeeklyBestSellers as WeeklyBestSellersScreen } from "./user/explore/nested/WeeklyBestSellers";
-
 export { MyBooks as MyBooksScreen } from "./user/read/nested/MyBooks";
 export { NewBooks as NewBooksScreen } from "./user/shared/NewBooks";
 export { BookOfTheDay as BookOfTheDayScreen } from "./user/read/nested/BookOfTheDay";
@@ -16,3 +15,4 @@ export { Book as BookScreen } from "./user/shared/Book";
 export { Dashboard as DashboardScreen } from "./dashboard/Dashboard";
 export { Parameters as ParametersScreen } from "./user/parameters/Parameters";
 export { Notifications as NotificationsScreen } from "./user/parameters/nested/Notifications";
+export { UserInfo as UserInfoScreen } from "./user/parameters/nested/UserInfo";
