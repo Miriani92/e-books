@@ -1,8 +1,9 @@
 import React from "react";
-import { View, Text, ScrollView } from "react-native";
-import { Button } from "../../../components";
+import { View, Text, ScrollView, FlatList } from "react-native";
+import { Button, InfoRow } from "../../../components";
 import { UserWall } from "../../../components";
 import { AdditionalInformation } from "../../../components";
+import { infoRowsData } from "../../../constants/data";
 
 type ParametersProps = {
   navigateToDashboard: () => void;
@@ -29,6 +30,10 @@ export const Parameters: React.FC<ParametersProps> = ({
   const { displayName: name, photoURL } = currentUser;
 
   const header = "Additional Information";
+
+  const flatListSeparator = () => {
+    return <View className="mb-4"></View>;
+  };
   return (
     <ScrollView className="flex-1 w-full align-center ">
       <UserWall
@@ -39,6 +44,13 @@ export const Parameters: React.FC<ParametersProps> = ({
         navigateToUserInfo={navigateToUserInfo}
       />
       <AdditionalInformation header={header} />
+      <FlatList
+        ItemSeparatorComponent={flatListSeparator}
+        data={infoRowsData}
+        renderItem={({ item }) => {
+          return <InfoRow {...item} />;
+        }}
+      />
 
       {/* <Text className="text-center font-bold mb-2 ">
         User Email: {currentUser.email}

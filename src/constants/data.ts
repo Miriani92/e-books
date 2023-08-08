@@ -327,3 +327,62 @@ export const readerList = [
     title: "reader",
   },
 ];
+
+export const infoRowsData = [
+  {
+    header: "my account",
+    icon: {
+      name: "ios-wallet",
+      source: "Ionicons",
+    },
+    screen: "MyAccount",
+  },
+  {
+    header: "my cards",
+    icon: {
+      name: "mastercard",
+      source: "Fontisto",
+    },
+    screen: "MyCards",
+  },
+  {
+    header: "my transactions",
+    icon: {
+      name: "circledown",
+      source: "AntDesign",
+    },
+    screen: "MyTransactions",
+  },
+  {
+    header: "my notifications",
+    icon: {
+      name: "bell-fill",
+      source: "Octicons",
+    },
+    screen: "MyNotifications",
+  },
+  {
+    header: "rules and conditions",
+    icon: {
+      name: "rule",
+      source: "MaterialIcons",
+    },
+    screen: "MyRules",
+  },
+  {
+    header: "contact",
+    icon: {
+      name: "phone",
+      source: "FontAwesome",
+    },
+    screen: "Contact",
+  },
+  {
+    header: "log out",
+    icon: {
+      name: "log-out",
+      source: "Feather",
+    },
+    screen: "Contact",
+  },
+];
