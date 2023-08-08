@@ -1,4 +1,5 @@
-import { View, Image, FlatList } from "react-native";
+import { View, FlatList } from "react-native";
+import { Image } from "expo-image";
 import React from "react";
 import { bannerData } from "../../constants/data";
 
@@ -20,7 +21,7 @@ export const ExploreBanner = () => {
           <Image
             source={item.image}
             className="w-80 h-32  rounded-md"
-            resizeMode="cover"
+            contentFit="cover"
           />
         )}
       />

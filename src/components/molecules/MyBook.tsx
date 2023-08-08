@@ -1,4 +1,5 @@
-import { View, Image, Text } from "react-native";
+import { View, Text } from "react-native";
+import { Image } from "expo-image";
 import { Animated } from "react-native";
 import React from "react";
 
@@ -23,7 +24,7 @@ export const MyBook: React.FC<any> = ({ item, xAxis, index }) => {
       <Image
         source={imageSource}
         className="h-60 w-40 rounded-t-xl"
-        resizeMode="cover"
+        contentFit="cover"
       />
       <View className="w-40 h-20 bg-grey-light p-4  justify-center self-center rounded-b-xl">
         <Text className="self-center pb-1">{title}</Text>

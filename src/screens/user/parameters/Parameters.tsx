@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, ScrollView } from "react-native";
 import { Button } from "../../../components";
 import { UserWall } from "../../../components";
+import { AdditionalInformation } from "../../../components";
 
 type ParametersProps = {
   navigateToDashboard: () => void;
@@ -27,6 +28,7 @@ export const Parameters: React.FC<ParametersProps> = ({
 }) => {
   const { displayName: name, photoURL } = currentUser;
 
+  const header = "Additional Information";
   return (
     <ScrollView className="flex-1 w-full align-center ">
       <UserWall
@@ -36,6 +38,8 @@ export const Parameters: React.FC<ParametersProps> = ({
         photoURL={photoURL}
         navigateToUserInfo={navigateToUserInfo}
       />
+      <AdditionalInformation header={header} />
+
       {/* <Text className="text-center font-bold mb-2 ">
         User Email: {currentUser.email}
       </Text>

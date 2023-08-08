@@ -16,3 +16,4 @@ export { Chart } from "./organisms/Chart";
 export { BookOfTheDayComponent } from "./organisms/BookOfTheDayComponent";
 export { ParametersHeader } from "./molecules/ParametersHeader";
 export { UserWall } from "./organisms/UserWall";
+export { AdditionalInformation } from "./atoms/AdditionalInformation";
