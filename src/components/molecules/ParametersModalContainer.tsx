@@ -1,7 +1,13 @@
 import React from "react";
 import { Modal } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { MyAccountScreen, MyCardsScreen } from "../../screens";
+import {
+  MyAccountScreen,
+  MyCardsScreen,
+  MyNotificationsScreen,
+  MyRulesScreen,
+  MyTransactionsScreen,
+  ContactScreen,
+} from "../../screens";
 
 type ModalProps = {
   activeModalScreen: string;
@@ -23,6 +29,14 @@ export const ParametersModalContainer: React.FC<ModalProps> = ({
         return <MyAccountScreen />;
       case "MyCards":
         return <MyCardsScreen />;
+      case "MyNotifications":
+        return <MyNotificationsScreen />;
+      case "MyRules":
+        return <MyRulesScreen />;
+      case "MyTransactions":
+        return <MyTransactionsScreen />;
+      case "Contact":
+        return <ContactScreen />;
     }
   };
   return (

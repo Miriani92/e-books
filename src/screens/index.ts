@@ -18,3 +18,8 @@ export { Notifications as NotificationsScreen } from "./user/parameters/nested/N
 export { UserInfo as UserInfoScreen } from "./user/parameters/nested/UserInfo";
 export { MyAccount as MyAccountScreen } from "./user/parameters/nested/MyAccount";
 export { MyCards as MyCardsScreen } from "./user/parameters/nested/MyCards";
+export { Contact as ContactScreen } from "./user/parameters/nested/Contact";
+export { MyNotifications as MyNotificationsScreen } from "./user/parameters/nested/MyNotifications";
+
+export { MyRules as MyRulesScreen } from "./user/parameters/nested/MyRules";
+export { MyTransitions as MyTransactionsScreen } from "./user/parameters/nested/MyTransitions";
