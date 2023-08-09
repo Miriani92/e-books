@@ -382,6 +382,7 @@ export const infoRowsData = [
     icon: {
       name: "log-out",
       source: "Feather",
+      color: "red",
     },
     screen: "Contact",
   },

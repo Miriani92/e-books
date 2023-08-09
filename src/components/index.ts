@@ -18,3 +18,4 @@ export { ParametersHeader } from "./molecules/ParametersHeader";
 export { UserWall } from "./organisms/UserWall";
 export { AdditionalInformation } from "./atoms/AdditionalInformation";
 export { InfoRow } from "./atoms/InfoRow";
+export { ParametersModalContainer } from "./molecules/ParametersModalContainer";

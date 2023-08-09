@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, ScrollView, FlatList } from "react-native";
 import { Button, InfoRow } from "../../../components";
 import { UserWall } from "../../../components";
 import { AdditionalInformation } from "../../../components";
 import { infoRowsData } from "../../../constants/data";
+import { ParametersModalContainer } from "../../../components";
 
 type ParametersProps = {
   navigateToDashboard: () => void;
@@ -27,12 +28,17 @@ export const Parameters: React.FC<ParametersProps> = ({
   readTime,
   navigateToUserInfo,
 }) => {
+  const [activeModalScreen, setActiveModalScreen] = useState<string>("");
+  const [isModalActive, setIsModalActive] = useState<boolean>(false);
   const { displayName: name, photoURL } = currentUser;
 
   const header = "Additional Information";
 
   const flatListSeparator = () => {
     return <View className="mb-4"></View>;
+  };
+  const handleSetModalScreen = (screen: string) => {
+    setActiveModalScreen(screen);
   };
   return (
     <ScrollView className="flex-1 w-full align-center ">
@@ -45,12 +51,33 @@ export const Parameters: React.FC<ParametersProps> = ({
       />
       <AdditionalInformation header={header} />
       <FlatList
+        contentContainerStyle={{ marginBottom: 32 }}
         ItemSeparatorComponent={flatListSeparator}
         data={infoRowsData}
         renderItem={({ item }) => {
-          return <InfoRow {...item} />;
+          return (
+            <InfoRow
+              {...item}
+              onPressInfoRow={handleSetModalScreen}
+              setModal={setIsModalActive}
+            />
+          );
         }}
       />
+      <ParametersModalContainer
+        activeModalScreen={activeModalScreen}
+        isModalActive={isModalActive}
+        setModal={setIsModalActive}
+      />
+      {/* <Modal
+        animationType="slide"
+        presentationStyle="formSheet"
+        transparent={false}
+        visible={true}
+        onRequestClose={({ navigaton }: any) => navigation.goBack()}
+      >
+        <Text>hello world</Text>
+      </Modal> */}
 
       {/* <Text className="text-center font-bold mb-2 ">
         User Email: {currentUser.email}

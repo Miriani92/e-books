@@ -16,3 +16,5 @@ export { Dashboard as DashboardScreen } from "./dashboard/Dashboard";
 export { Parameters as ParametersScreen } from "./user/parameters/Parameters";
 export { Notifications as NotificationsScreen } from "./user/parameters/nested/Notifications";
 export { UserInfo as UserInfoScreen } from "./user/parameters/nested/UserInfo";
+export { MyAccount as MyAccountScreen } from "./user/parameters/nested/MyAccount";
+export { MyCards as MyCardsScreen } from "./user/parameters/nested/MyCards";

@@ -1,31 +1,55 @@
 import React from "react";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { View, Text } from "react-native";
+import { Feather } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 import * as icons from "@expo/vector-icons";
 
 type InfoRowProps = {
   header: string;
-  icon: { name: string; source: string };
+  icon: { name: string; source: string; color?: string };
   screen: string;
+  onPressInfoRow(screen: string): void;
+  setModal(isActive: boolean): void;
 };
 
-export const InfoRow: React.FC<InfoRowProps> = ({ header, icon, screen }) => {
+export const InfoRow: React.FC<InfoRowProps> = ({
+  header,
+  icon,
+  screen,
+  onPressInfoRow,
+  setModal,
+}) => {
   const { name, source } = icon;
   const iconSize = name === "mastercard" ? 20 : 24;
+  const iconColor = icon?.color ? icon.color : "black";
 
   const Icon = (() => {
     const Icon = icons[source];
     return Icon;
   })();
-
+  const handlePress = () => {
+    setModal(true);
+    onPressInfoRow(screen);
+  };
   return (
-    <View className=" px-2 py-1 rounded-lg self-center bg-white-slate w-11/12 flex-row">
-      <View>
-        <View className="w-12 h-12 rounded-full bg-sky-400 justify-center">
+    <TouchableOpacity
+      className=" px-2 py-1 rounded-lg self-center bg-white-slate w-11/12 flex-row justify-between"
+      onPress={handlePress}
+    >
+      <View className="flex-row ">
+        <View className="w-12 h-12 mr-4 rounded-full bg-sky-300  justify-center">
           <View className="self-center">
-            <Icon name={name} size={iconSize} color="grey" />
+            <Icon name={name} size={iconSize} color={iconColor} />
           </View>
         </View>
+        <View className="justify-center">
+          <Text className="self-center">{header.toUpperCase()}</Text>
+        </View>
       </View>
-    </View>
+      <View className="justify-center">
+        <Feather name="arrow-right" size={24} color="black" />
+      </View>
+    </TouchableOpacity>
   );
 };
