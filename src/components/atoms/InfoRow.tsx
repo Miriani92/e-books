@@ -2,7 +2,7 @@ import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { View, Text } from "react-native";
 import { Feather } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+import { Alert } from "react-native";
 import * as icons from "@expo/vector-icons";
 
 type InfoRowProps = {
@@ -11,6 +11,7 @@ type InfoRowProps = {
   screen: string;
   onPressInfoRow(screen: string): void;
   setModal(isActive: boolean): void;
+  handleLogOut(): void;
 };
 
 export const InfoRow: React.FC<InfoRowProps> = ({
@@ -19,16 +20,35 @@ export const InfoRow: React.FC<InfoRowProps> = ({
   screen,
   onPressInfoRow,
   setModal,
+  handleLogOut,
 }) => {
   const { name, source } = icon;
   const iconSize = name === "mastercard" ? 20 : 24;
   const iconColor = icon?.color ? icon.color : "black";
 
+  const alertTitle = "LOG OUT?";
+  const alertText = "Do you want to log out?";
+
   const Icon = (() => {
     const Icon = icons[source];
     return Icon;
   })();
+
   const handlePress = () => {
+    if (name === "log-out") {
+      return Alert.alert(alertTitle, alertText, [
+        {
+          text: "Log out",
+          onPress: handleLogOut,
+          style: "destructive",
+        },
+        {
+          text: "Cancel",
+          onPress: () => console.log("cancel pressed"),
+          style: "cancel",
+        },
+      ]);
+    }
     setModal(true);
     onPressInfoRow(screen);
   };
