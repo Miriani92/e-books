@@ -5,6 +5,8 @@ import { UserWall } from "../../../components";
 import { AdditionalInformation } from "../../../components";
 import { infoRowsData } from "../../../constants/data";
 import { ParametersModalContainer } from "../../../components";
+import { useNavigation } from "@react-navigation/native";
+import { AddTheBook } from "../../../components";
 
 type ParametersProps = {
   handleSignOut: () => void;
@@ -26,6 +28,7 @@ export const Parameters: React.FC<ParametersProps> = ({
   readTime,
   navigateToUserInfo,
 }) => {
+  const navigation = useNavigation<any>();
   const [activeModalScreen, setActiveModalScreen] = useState<string>("");
   const [isModalActive, setIsModalActive] = useState<boolean>(false);
   const { displayName: name, photoURL } = currentUser;
@@ -42,6 +45,9 @@ export const Parameters: React.FC<ParametersProps> = ({
   const handleLogOut = () => {
     handleSignOut();
   };
+  const handleAddBookClick = () => {
+    navigation.push("UploadBook");
+  };
   return (
     <ScrollView className="flex-1 w-full align-center ">
       <UserWall
@@ -51,6 +57,7 @@ export const Parameters: React.FC<ParametersProps> = ({
         photoURL={photoURL}
         navigateToUserInfo={navigateToUserInfo}
       />
+      <AddTheBook onAddBookClick={handleAddBookClick} />
       <AdditionalInformation header={header} />
       <FlatList
         contentContainerStyle={{ marginBottom: 32 }}

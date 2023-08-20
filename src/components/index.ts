@@ -19,3 +19,4 @@ export { UserWall } from "./organisms/UserWall";
 export { AdditionalInformation } from "./atoms/AdditionalInformation";
 export { InfoRow } from "./atoms/InfoRow";
 export { ParametersModalContainer } from "./molecules/ParametersModalContainer";
+export { AddTheBook } from "./molecules/AddTheBook";

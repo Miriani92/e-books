@@ -11,6 +11,7 @@ import {
   MyAudibleBooksScreen,
   DashboardScreen,
   UserInfoScreen,
+  UploadBookScreen,
 } from "../../screens";
 
 export const UserNavigator = () => {
@@ -63,6 +64,11 @@ export const UserNavigator = () => {
         name="UserInfo"
         options={{ headerShown: true }}
         component={UserInfoScreen}
+      ></Stack.Screen>
+      <Stack.Screen
+        name="UploadBook"
+        options={{ headerShown: true }}
+        component={UploadBookScreen}
       ></Stack.Screen>
     </Stack.Navigator>
   );
