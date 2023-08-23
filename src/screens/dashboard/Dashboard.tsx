@@ -48,7 +48,7 @@ export const Dashboard = () => {
         <Input
           style="bg-grey-light w-52 h-10 rounded-md"
           value={state?.name}
-          onChange={(e: any) => handleInputChanged(e, "name", ADD_NAME)}
+          onChange={(e) => handleInputChanged(e, "name", ADD_NAME)}
           placeHolder="Name"
           type="name"
         />

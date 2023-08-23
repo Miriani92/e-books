@@ -1,7 +1,15 @@
 import { View, TextInput } from "react-native";
 import React from "react";
 
-export const Input: React.FC<any> = (props) => {
+type InputProps = {
+  value: string;
+  onChange(e: any): void;
+  placeHolder: string;
+  type: string;
+  style: string;
+};
+
+export const Input: React.FC<InputProps> = (props) => {
   const { value, onChange, placeHolder, type, style } = props;
   return (
     <View className={`${style} px-2 py-0.5 mt-2 align-middle justify-start`}>
