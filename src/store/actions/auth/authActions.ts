@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { signOut } from "firebase/auth";
-import { uploadImageToDatabase } from "../../utils/auth.utils";
+import { handleFbStorageUpload } from "../../utils/auth.utils";
 
 export const onRegister = createAsyncThunk(
   "auth/register",
@@ -22,7 +22,7 @@ export const onRegister = createAsyncThunk(
       const updatedUser: any = { displayName: name, photoURL: null };
 
       if (imageURI) {
-        const storedImageURL = await uploadImageToDatabase(imageURI);
+        const storedImageURL = await handleFbStorageUpload(imageURI, null);
         updatedUser.photoURL = storedImageURL;
       }
       await updateProfile(auth.currentUser, updatedUser);

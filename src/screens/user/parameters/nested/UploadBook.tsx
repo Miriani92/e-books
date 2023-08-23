@@ -3,14 +3,18 @@ import { View, Text } from "react-native";
 import { Button } from "../../../../components";
 import { Input } from "../../../../components/dashboard/Input";
 import { getDocumentAsync } from "expo-document-picker";
+import { useAppSelector } from "../../../../hooks/app/useStore";
+import { handleFbStorageUpload as uploadPdfToDatabse } from "../../../../store/utils/auth.utils";
 
 type InputProps = {
   header: string;
-  bookURI: any;
+  book: any;
 };
 
 export const UploadBook = () => {
-  const [state, setState] = useState<InputProps>({ header: "", bookURI: null });
+  const [state, setState] = useState<InputProps>({ header: "", book: null });
+  const { currentUser }: any = useAppSelector((state) => state.auth);
+  console.log("currnet__", currentUser);
   const handleChange = async (e: any, name: string) => {
     setState((state: InputProps) => {
       return { ...state, header: name };
@@ -19,13 +23,14 @@ export const UploadBook = () => {
 
   const handlePickBook = async () => {
     try {
-      const pdf: any = await getDocumentAsync();
-      console.log("pdfBook__", pdf.uri);
-      setState((state: InputProps) => {
-        return { ...state, bookURI: pdf.uri };
-      });
+      const response: any = await getDocumentAsync();
+      const storedPdfUrl = await uploadPdfToDatabse(
+        response.uri,
+        currentUser.displayName
+      );
+      // we got pdf url and we need link mybooks node
     } catch (error) {
-      console.log("error__", error);
+      console.log("error", error);
     }
   };
 
