@@ -8,44 +8,62 @@ import { handleFbStorageUpload as uploadPdfToDatabse } from "../../../../store/u
 
 type InputProps = {
   header: string;
-  book: any;
+  author: string;
 };
 
 export const UploadBook = () => {
-  const [state, setState] = useState<InputProps>({ header: "", book: null });
+  const [state, setState] = useState<InputProps>({ header: "", author: "" });
+  const [{ loading }, setOnLoading] = useState<{
+    loading: boolean;
+  }>({ loading: false });
   const { currentUser }: any = useAppSelector((state) => state.auth);
-  console.log("currnet__", currentUser);
-  const handleChange = async (e: any, name: string) => {
+
+  const handleChange = (value: string, name: string) => {
     setState((state: InputProps) => {
-      return { ...state, header: name };
+      return { ...state, [name]: value };
     });
   };
 
   const handlePickBook = async () => {
     try {
       const response: any = await getDocumentAsync();
+      setOnLoading({ loading: true });
       const storedPdfUrl = await uploadPdfToDatabse(
         response.uri,
         currentUser.displayName
       );
-      // we got pdf url and we need link mybooks node
+      setOnLoading({ loading: false });
+      setState({ header: "", author: "" });
     } catch (error) {
+      setOnLoading({ loading: false });
       console.log("error", error);
     }
   };
 
   return (
-    <View className="w-11/12 self-center py-4 ">
+    <View className="w-11/12 self-center py-4  relative">
       <Text className="self-center">ADD THE BOOK</Text>
-
       <Input
         style="mb-2 self-center bg-grey-light w-72 h-10 rounded-md"
         value={state.header}
-        onChange={(e) => handleChange(e, "header")}
+        onChange={(value) => handleChange(value, "header")}
         placeHolder="Header"
         type="name"
       />
-      <Button text="Add Book" style="bg-green" onPress={handlePickBook} />
+      <Input
+        style="mb-2 self-center bg-grey-light w-72 h-10 rounded-md"
+        value={state.author}
+        onChange={(value) => handleChange(value, "author")}
+        placeHolder="Author"
+        type="name"
+      />
+      <Button
+        text="Add Book"
+        style="bg-green"
+        onPress={handlePickBook}
+        isLoading={loading}
+        isDisabled={state.header && state.author ? false : true}
+      />
     </View>
   );
 };
