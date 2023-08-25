@@ -3,7 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useAppDispatch } from "../../../hooks/app/useStore";
 import { useAppSelector } from "../../../hooks/app/useStore";
 import { ParametersScreen } from "../../../screens";
-import { handleSignOut } from "../../../store/actions/auth/authActions";
+import { handleSignOut } from "../../../store/actions/auth/auth";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,

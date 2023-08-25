@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import persistReducer from "redux-persist/es/persistReducer";
 import persistStore from "redux-persist/es/persistStore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import authSlice from "./reducers/auth/authSlice";
+import authSlice from "./reducers/auth/auth";
 import readerChart from "./reducers/chart/readerChatSlice";
 
 const persistConfig = {

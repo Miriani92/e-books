@@ -4,7 +4,7 @@ import { SignUpScreen } from "../../screens";
 import { useNavigation } from "@react-navigation/native";
 import { useForm } from "../../hooks";
 import { useAppDispatch, useAppSelector } from "../../hooks/app/useStore";
-import { onRegister } from "../../store/actions/auth/authActions";
+import { onRegister } from "../../store/actions/auth/auth";
 import {
   validateEmail,
   validatePassword,

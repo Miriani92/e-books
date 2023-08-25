@@ -34,7 +34,7 @@ export const UserWall: React.FC<UserWallProps> = ({
           />
           <View className="ml-4 justify-center">
             <Text>{greeting.toUpperCase()}</Text>
-            <Text className="font-bold">{userName.toUpperCase()}</Text>
+            <Text className="font-bold">{userName?.toUpperCase()}</Text>
           </View>
         </View>
         <TouchableOpacity

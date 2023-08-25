@@ -5,7 +5,7 @@ import { FormData } from "./SignUpContainer";
 import { useForm } from "../../hooks";
 import { useAppDispatch } from "../../hooks/app/useStore";
 import { useAppSelector } from "../../hooks/app/useStore";
-import { handleSignIn } from "../../store/actions/auth/authActions";
+import { handleSignIn } from "../../store/actions/auth/auth";
 import {
   validateEmail,
   validatePassword,
