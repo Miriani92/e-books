@@ -8,14 +8,16 @@ import { handleFbStorageUpload as uploadPdfToDatabse } from "../../../../store/u
 
 type InputProps = {
   header: string;
-  author: string;
+  authorName: string;
+  authorSurname: string;
   category: string;
 };
 
 export const UploadBook = () => {
   const [state, setState] = useState<InputProps>({
     header: "",
-    author: "",
+    authorName: "",
+    authorSurname: "",
     category: "",
   });
   const [{ loading }, setOnLoading] = useState<{
@@ -38,7 +40,7 @@ export const UploadBook = () => {
         currentUser.displayName
       );
       setOnLoading({ loading: false });
-      setState({ header: "", author: "", category: "" });
+      setState({ header: "", authorName: "", category: "", authorSurname: "" });
     } catch (error) {
       setOnLoading({ loading: false });
       console.log("error", error);
@@ -57,9 +59,16 @@ export const UploadBook = () => {
       />
       <Input
         style="mb-2 self-center bg-grey-light w-72 h-10 rounded-md"
-        value={state.author}
-        onChange={(value) => handleChange(value, "author")}
-        placeHolder="Author"
+        value={state.authorName}
+        onChange={(value) => handleChange(value, "authorName")}
+        placeHolder="Authorname"
+        type="name"
+      />
+      <Input
+        style="mb-2 self-center bg-grey-light w-72 h-10 rounded-md"
+        value={state.authorSurname}
+        onChange={(value) => handleChange(value, "authorSurname")}
+        placeHolder="Authorsurname "
         type="name"
       />
 
@@ -70,13 +79,19 @@ export const UploadBook = () => {
         placeHolder="Category"
         type="name"
       />
+
       <Button
         text="Add Book"
         style="bg-green"
         onPress={handlePickBook}
         isLoading={loading}
         isDisabled={
-          state.header && state.author && state.category ? false : true
+          state.header &&
+          state.authorName &&
+          state.authorSurname &&
+          state.category
+            ? false
+            : true
         }
       />
     </View>
