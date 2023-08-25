@@ -9,10 +9,15 @@ import { handleFbStorageUpload as uploadPdfToDatabse } from "../../../../store/u
 type InputProps = {
   header: string;
   author: string;
+  category: string;
 };
 
 export const UploadBook = () => {
-  const [state, setState] = useState<InputProps>({ header: "", author: "" });
+  const [state, setState] = useState<InputProps>({
+    header: "",
+    author: "",
+    category: "",
+  });
   const [{ loading }, setOnLoading] = useState<{
     loading: boolean;
   }>({ loading: false });
@@ -33,7 +38,7 @@ export const UploadBook = () => {
         currentUser.displayName
       );
       setOnLoading({ loading: false });
-      setState({ header: "", author: "" });
+      setState({ header: "", author: "", category: "" });
     } catch (error) {
       setOnLoading({ loading: false });
       console.log("error", error);
@@ -57,12 +62,22 @@ export const UploadBook = () => {
         placeHolder="Author"
         type="name"
       />
+
+      <Input
+        style="mb-2 self-center bg-grey-light w-72 h-10 rounded-md"
+        value={state.category}
+        onChange={(value) => handleChange(value, "category")}
+        placeHolder="Category"
+        type="name"
+      />
       <Button
         text="Add Book"
         style="bg-green"
         onPress={handlePickBook}
         isLoading={loading}
-        isDisabled={state.header && state.author ? false : true}
+        isDisabled={
+          state.header && state.author && state.category ? false : true
+        }
       />
     </View>
   );
