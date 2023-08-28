@@ -1,5 +1,4 @@
 import React from "react";
-import { Text } from "react-native";
 import { registerRootComponent } from "expo";
 import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";

@@ -30,8 +30,8 @@ export const Dashboard = () => {
   const addToDabase: any = async (state: any) => {
     const { name } = state;
     try {
-      await set(ref(db, name + "hello/gela"), { message: "ravaxart" });
-      console.log("added to databse");
+      await set(ref(db, name + "hello/miriani"), { message: "ravaxart" });
+      console.log("added to dataabse");
     } catch (error) {
       console.log("something went wrong", error);
     }

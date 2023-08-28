@@ -19,14 +19,16 @@ export const onRegister = createAsyncThunk(
     try {
       await createUserWithEmailAndPassword(auth, email, password);
 
-      const updatedUser: any = { displayName: name, photoURL: null };
+      const updatedUser: any = {
+        displayName: name,
+        photoURL: null,
+      };
 
       if (imageURI) {
         const storedImageURL = await handleFbStorageUpload(imageURI, null);
         updatedUser.photoURL = storedImageURL;
       }
       await updateProfile(auth.currentUser, updatedUser);
-
       const {
         email: registeredEmail,
         displayName,
@@ -34,7 +36,13 @@ export const onRegister = createAsyncThunk(
         photoURL,
       } = auth.currentUser;
 
-      return { email: registeredEmail, displayName, uid, photoURL };
+      return {
+        email: registeredEmail,
+        displayName,
+        uid,
+        photoURL,
+        userPassword: password,
+      };
     } catch (error) {
       rejectWithValue({ message: " Couldn't register the user" });
     }
@@ -47,15 +55,10 @@ export const handleSignIn = createAsyncThunk(
     { email: insertedEmail, password }: { email: string; password: string },
     { rejectWithValue }
   ) => {
-    const userData = await signInWithEmailAndPassword(
-      auth,
-      insertedEmail,
-      password
-    )
+    const userData = signInWithEmailAndPassword(auth, insertedEmail, password)
       .then((res) => {
-        const { email, uid } = res.user;
-        const currentUser = { email, uid };
-        return currentUser;
+        const { email, uid, displayName, photoURL } = res.user;
+        return { email, displayName, uid, photoURL, userPassword: password };
       })
       .catch(() => rejectWithValue("Email or password is incorrect"));
     return userData;

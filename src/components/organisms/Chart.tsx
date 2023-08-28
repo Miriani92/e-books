@@ -18,7 +18,6 @@ export const Chart: React.FC<any> = (props) => {
   const handleGetActiveList = useCallback(() => {
     const activeList =
       data[activeHeader][activeSubHeader] || data[activeHeader];
-    console.log(activeList);
     return activeList;
   }, [activeSubHeader, acitiveIndex]);
 
