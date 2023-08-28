@@ -20,11 +20,11 @@ const addBookSlice = createSlice({
     builder.addCase(onAddBook.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(onAddBook.fulfilled, (state, action) => {
-      state.loading = true;
+    builder.addCase(onAddBook.fulfilled, (state) => {
+      state.loading = false;
     });
     builder.addCase(onAddBook.rejected, (state, action) => {
-      state.loading = true;
+      state.loading = false;
       state.error = action.payload;
     });
   },

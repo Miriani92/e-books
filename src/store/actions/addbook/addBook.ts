@@ -1,9 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { db } from "../../../utils/firebase";
-import { ref, set } from "firebase/database";
-import { auth } from "../../../utils/firebase";
+import { ref, set, push, child } from "firebase/database";
 
-const URL = "/authentication/userOwned/books";
+const URL = "authentication/userOwned/books";
 type AddBookPayload = {
   header: string;
   authorName: string;
@@ -22,9 +21,8 @@ export const onAddBook = createAsyncThunk(
     storedPdfUrl,
   }: AddBookPayload) => {
     try {
-      const { uid: userId } = auth.currentUser;
-      const databaseRef = ref(db, URL + userId);
-      set(databaseRef, {
+      const newBookRef = push(ref(db, URL));
+      set(newBookRef, {
         header,
         authorName,
         authorSurname,
