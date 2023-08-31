@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { db } from "../../../utils/firebase";
-import { ref, set, push, child } from "firebase/database";
+import { ref, set, push } from "firebase/database";
 
 const URL = "authentication/userOwned/books";
-type AddBookPayload = {
+export type AddBookPayload = {
   header: string;
   authorName: string;
   category: string;
@@ -29,6 +29,7 @@ export const onAddBook = createAsyncThunk(
         category,
         storedPdfUrl,
       });
+
       return;
     } catch (error) {
       console.log("eroror___", error);

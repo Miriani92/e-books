@@ -6,6 +6,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import authSlice from "./reducers/auth/auth";
 import readerChart from "./reducers/chart/readerChatSlice";
 import lastUploadedbook from "./reducers/addbook/addBook";
+import booksCategory from "./reducers/books/booksCategory";
 
 const persistConfig = {
   key: "auth",
@@ -15,7 +16,7 @@ const persistConfig = {
 const auth = persistReducer(persistConfig, authSlice);
 
 export const store = configureStore({
-  reducer: { auth, lastUploadedbook, readerChart },
+  reducer: { auth, lastUploadedbook, readerChart, booksCategory },
   middleware: [thunk],
 });
 
