@@ -5,7 +5,7 @@ import { Input } from "../../../../components/dashboard/Input";
 import { getDocumentAsync } from "expo-document-picker";
 import { useAppSelector } from "../../../../hooks/app/useStore";
 import { useAppDispatch } from "../../../../hooks/app/useStore";
-import { onAddBook } from "../../../../store/actions/addbook/addBook";
+import { onAddBook } from "../../../../store/actions/addBook";
 import { handleFbStorageUpload as uploadPdfToDatabse } from "../../../../store/utils/auth.utils";
 
 type InputProps = {

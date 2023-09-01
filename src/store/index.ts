@@ -3,10 +3,10 @@ import thunk from "redux-thunk";
 import persistReducer from "redux-persist/es/persistReducer";
 import persistStore from "redux-persist/es/persistStore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import authSlice from "./reducers/auth/auth";
-import readerChart from "./reducers/chart/readerChatSlice";
-import lastUploadedbook from "./reducers/addbook/addBook";
-import booksCategory from "./reducers/books/booksCategory";
+import authSlice from "./reducers/auth";
+import readerChart from "./reducers/readerChatSlice";
+import lastUploadedbook from "./reducers/addBook";
+import booksCategory from "./reducers/booksCategory";
 
 const persistConfig = {
   key: "auth",

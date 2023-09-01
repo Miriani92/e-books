@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { db } from "../../../utils/firebase";
+import { db } from "../../utils/firebase";
 import { ref, set, push } from "firebase/database";
 
 const URL = "authentication/userOwned/books";

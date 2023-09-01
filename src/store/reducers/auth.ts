@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { createSlice } from "@reduxjs/toolkit";
-import { onRegister } from "../../actions/auth/auth";
-import { handleSignOut } from "../../actions/auth/auth";
-import { handleSignIn } from "../../actions/auth/auth";
+import { onRegister } from "../actions/auth";
+import { handleSignOut } from "../actions/auth";
+import { handleSignIn } from "../actions/auth";
 
 type InitialaStateProps = {
   currentUser: unknown;

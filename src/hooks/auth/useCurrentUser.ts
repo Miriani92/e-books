@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useAppSelector } from "../app/useStore";
 import { useAppDispatch } from "../app/useStore";
-import { handleSignIn } from "../../store/actions/auth/auth";
+import { handleSignIn } from "../../store/actions/auth";
 
 export const useCurrentUser = () => {
   const { currentUser, isSigndIn }: any = useAppSelector((state) => state.auth);

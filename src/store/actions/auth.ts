@@ -1,9 +1,9 @@
-import { auth } from "../../../utils/firebase";
+import { auth } from "../../utils/firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { signOut } from "firebase/auth";
-import { handleFbStorageUpload } from "../../utils/auth.utils";
+import { handleFbStorageUpload } from "../utils/auth.utils";
 
 export const onRegister = createAsyncThunk(
   "auth/register",

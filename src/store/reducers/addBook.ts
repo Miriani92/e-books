@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { createSlice } from "@reduxjs/toolkit";
-import { onAddBook } from "../../actions/addbook/addBook";
+import { onAddBook } from "../actions/addBook";
 
 type AddBookProps = {
   loading: boolean;
