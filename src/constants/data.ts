@@ -1,4 +1,5 @@
 import { images } from "../images";
+import type { DataProps } from "../components/atoms/PickerInput";
 const {
   Duck,
   StarBoy,
@@ -386,4 +387,14 @@ export const infoRowsData = [
     },
     screen: "Contact",
   },
+];
+
+export const addBookCategoryPickerData: DataProps[] = [
+  { label: "Choose Category", value: "" },
+  { label: "Poetry", value: "poetry" },
+  { label: "Prose", value: "prose" },
+  { label: "Utopia", value: "utopia" },
+  { label: "Fantastic", value: "fantastic" },
+  { label: "Detective", value: "detective" },
+  { label: "Tale", value: "tale" },
 ];

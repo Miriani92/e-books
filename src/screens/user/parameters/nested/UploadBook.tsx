@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { View, Text } from "react-native";
 import { Button } from "../../../../components";
+import { addBookCategoryPickerData } from "../../../../constants/data";
+import { PickerInput } from "../../../../components";
 import { Input } from "../../../../components/dashboard/Input";
 import { getDocumentAsync } from "expo-document-picker";
 import { useAppSelector } from "../../../../hooks/app/useStore";
@@ -16,6 +18,7 @@ type InputProps = {
 };
 
 export const UploadBook = () => {
+  const [isPickerActive, setIsPickerActive] = useState<boolean>(false);
   const [{ authorName, category, authorSurname, header }, setBook] =
     useState<InputProps>({
       header: "",
@@ -80,18 +83,16 @@ export const UploadBook = () => {
         placeHolder="Authorsurname "
         type="name"
       />
-
-      <Input
-        style="mb-2 self-center bg-grey-light w-72 h-10 rounded-md"
-        value={category}
-        onChange={(value) => handleChange(value, "category")}
+      <PickerInput
+        data={addBookCategoryPickerData}
+        onChangeHanlder={(value: any) => handleChange(value, "category")}
         placeHolder="Category"
-        type="name"
+        isActive={isPickerActive}
+        setPicker={(value: boolean) => setIsPickerActive(value)}
       />
-
       <Button
         text="Add Book"
-        style="bg-green"
+        style="bg-green mt-2"
         onPress={handlePickBook}
         isLoading={loading}
         isDisabled={
