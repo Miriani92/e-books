@@ -44,7 +44,7 @@ export const onRegister = createAsyncThunk(
         userPassword: password,
       };
     } catch (error) {
-      rejectWithValue({ message: " Couldn't register the user" });
+      rejectWithValue({ message: "Couldn't register the user" });
     }
   }
 );

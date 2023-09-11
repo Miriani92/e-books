@@ -47,10 +47,16 @@ export const UploadBook = () => {
         response.uri,
         currentUser.displayName
       );
+      const bookData = {
+        header: header?.toLowerCase(),
+        authorName: authorName?.toLowerCase(),
+        authorSurname: authorSurname?.toLowerCase(),
+        category: category?.toLowerCase(),
+        storedPdfUrl,
+      };
 
-      dispatch(
-        onAddBook({ header, authorName, authorSurname, category, storedPdfUrl })
-      );
+      dispatch(onAddBook(bookData));
+
       setOnLoading({ loading: false });
       setBook({ header: "", authorName: "", category: "", authorSurname: "" });
     } catch (error) {
@@ -87,6 +93,7 @@ export const UploadBook = () => {
         data={addBookCategoryPickerData}
         onChangeHanlder={(value: any) => handleChange(value, "category")}
         placeHolder="Category"
+        value={category}
         isActive={isPickerActive}
         setPicker={(value: boolean) => setIsPickerActive(value)}
       />

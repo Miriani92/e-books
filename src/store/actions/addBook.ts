@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { db } from "../../utils/firebase";
 import { ref, set, push } from "firebase/database";
 import { addBookToCategory } from "./booksCategory";
+import { auth } from "../../utils/firebase";
 import { addAuthor } from "./author";
 
 const URL = "authentication/userOwned/books";
@@ -27,16 +28,19 @@ export const onAddBook = createAsyncThunk(
   ) => {
     try {
       const addedBookData = {
-        header,
-        authorName,
-        authorSurname,
-        category,
+        header: header?.toLowerCase(),
+        authorName: authorName?.toLowerCase(),
+        authorSurname: authorSurname?.toLowerCase(),
+        category: category?.toLowerCase(),
         storedPdfUrl,
       };
-      const newBookRef = push(ref(db, URL));
+
+      const { uid } = auth.currentUser;
+
+      const newBookRef = push(ref(db, URL + `/${uid}`));
       set(newBookRef, addedBookData);
       dispatch(addBookToCategory(addedBookData));
-      // dispatch(addAuthor);
+      dispatch(addAuthor({ authorName, authorSurname }));
       return;
     } catch (error) {
       console.log("eroror___", error);

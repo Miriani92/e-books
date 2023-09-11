@@ -3,7 +3,7 @@ import { db } from "../../utils/firebase";
 import { ref, set, push } from "firebase/database";
 import type { AddBookPayload } from "./addBook";
 
-const URL = "authentication/books/categories";
+const URL = "authentication/userReadable/books/categories";
 
 export const addBookToCategory = createAsyncThunk(
   "booksCategory/addBook",
