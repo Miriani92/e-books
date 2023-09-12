@@ -24,3 +24,5 @@ export { MyNotifications as MyNotificationsScreen } from "./user/parameters/nest
 export { MyRules as MyRulesScreen } from "./user/parameters/nested/MyRules";
 export { MyTransitions as MyTransactionsScreen } from "./user/parameters/nested/MyTransitions";
 export { UploadBook as UploadBookScreen } from "./user/parameters/nested/UploadBook";
+
+export { Search as SearchScreen } from "./user/shared/Search";

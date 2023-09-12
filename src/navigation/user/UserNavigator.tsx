@@ -25,6 +25,7 @@ export const UserNavigator = () => {
         options={{ headerShown: true }}
         component={FavoritesScreen}
       ></Stack.Screen>
+
       <Stack.Screen
         name="Categories"
         options={{ headerShown: true }}

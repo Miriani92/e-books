@@ -16,8 +16,13 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from "react-native-reanimated";
+import { useAppSelector } from "../../hooks/app/useStore";
 
 export const TabNavigator = () => {
+  const { isListenSearch, isReadSearch } = useAppSelector(
+    (state) => state.search
+  );
+
   const transitionValue = useSharedValue(800);
   const animatedStyle = useAnimatedStyle(() => {
     return {
@@ -76,8 +81,24 @@ export const TabNavigator = () => {
   return (
     <Animated.View style={[animatedStyle, { flex: 1 }]}>
       <Tab.Navigator screenOptions={setOptions}>
-        <Tab.Screen name="Read" component={ReadNavigator}></Tab.Screen>
-        <Tab.Screen name="Listen" component={ListenNavigator}></Tab.Screen>
+        <Tab.Screen
+          name="Read"
+          component={ReadNavigator}
+          options={() => ({
+            tabBarStyle: {
+              display: isReadSearch ? "none" : "flex",
+            },
+          })}
+        ></Tab.Screen>
+        <Tab.Screen
+          name="Listen"
+          component={ListenNavigator}
+          options={() => ({
+            tabBarStyle: {
+              display: isListenSearch ? "none" : "flex",
+            },
+          })}
+        ></Tab.Screen>
         <Tab.Screen
           name="SingleBook"
           options={{ tabBarLabel: "", tabBarStyle: { display: "none" } }}
