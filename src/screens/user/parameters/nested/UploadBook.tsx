@@ -48,10 +48,10 @@ export const UploadBook = () => {
         currentUser.displayName
       );
       const bookData = {
-        header: header?.toLowerCase(),
-        authorName: authorName?.toLowerCase(),
-        authorSurname: authorSurname?.toLowerCase(),
-        category: category?.toLowerCase(),
+        header: header?.toLowerCase().trim(),
+        authorName: authorName?.toLowerCase().trim(),
+        authorSurname: authorSurname?.toLowerCase().trim(),
+        category: category?.toLowerCase().trim(),
         storedPdfUrl,
       };
 

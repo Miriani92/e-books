@@ -4,6 +4,7 @@ import { ref, set, push } from "firebase/database";
 import { addBookToCategory } from "./booksCategory";
 import { auth } from "../../utils/firebase";
 import { addAuthor } from "./author";
+import { addBook } from "./allBooks";
 
 const URL = "authentication/userOwned/books";
 export type AddBookPayload = {
@@ -28,10 +29,10 @@ export const onAddBook = createAsyncThunk(
   ) => {
     try {
       const addedBookData = {
-        header: header?.toLowerCase(),
-        authorName: authorName?.toLowerCase(),
-        authorSurname: authorSurname?.toLowerCase(),
-        category: category?.toLowerCase(),
+        header,
+        authorName,
+        authorSurname,
+        category,
         storedPdfUrl,
       };
 
@@ -41,6 +42,8 @@ export const onAddBook = createAsyncThunk(
       set(newBookRef, addedBookData);
       dispatch(addBookToCategory(addedBookData));
       dispatch(addAuthor({ authorName, authorSurname }));
+      dispatch(addBook(addedBookData));
+
       return;
     } catch (error) {
       console.log("eroror___", error);
