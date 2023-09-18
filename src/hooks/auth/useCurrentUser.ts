@@ -1,5 +1,6 @@
-// import { useAppSelector } from "../app/useStore";
 import { useEffect } from "react";
+import { AppState } from "react-native";
+import { loadRecentUploadedBooks } from "../../store/actions/allBooks";
 import { useAppSelector } from "../app/useStore";
 import { useAppDispatch } from "../app/useStore";
 import { handleSignIn } from "../../store/actions/auth";
@@ -12,12 +13,17 @@ export const useCurrentUser = () => {
     password: currentUser?.userPassword,
   };
 
-  const logUser = async () => {
-    dispatch(handleSignIn(cachedCredentials));
+  const onAppOpen = async () => {
+    try {
+      await dispatch(handleSignIn(cachedCredentials));
+      await dispatch(loadRecentUploadedBooks());
+    } catch (error) {
+      console.error(error);
+    }
   };
   useEffect(() => {
-    logUser();
-  }, []);
+    onAppOpen();
+  }, [AppState.isAvailable]);
 
   return { isSigndIn };
 };

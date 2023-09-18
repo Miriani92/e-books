@@ -18,7 +18,6 @@ export const ReadScreenHeader: React.FC<any> = ({
   const navigateToDrawerFilter = () => {
     navigation.openDrawer();
   };
-  console.log("setActiveInListen", setActive);
   return (
     <View className="self-center mt-12  flex-row w-full  align-bottom   justify-around">
       <SearchInput style={""} setActive={setActive} isActive={isActive} />

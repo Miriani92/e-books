@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { GuestNavigator } from "./auth/GuestNavigator";
 import { UserNavigator } from "./user/UserNavigator";
 import { useCurrentUser } from "../hooks/auth/useCurrentUser";

@@ -8,6 +8,8 @@ import readerChart from "./reducers/readerChatSlice";
 import lastUploadedbook from "./reducers/addBook";
 import booksCategory from "./reducers/booksCategory";
 import search from "./reducers/search";
+import user from "./reducers/user";
+import allBooks from "./reducers/allBooks";
 
 const persistConfig = {
   key: "auth",
@@ -17,7 +19,15 @@ const persistConfig = {
 const auth = persistReducer(persistConfig, authSlice);
 
 export const store = configureStore({
-  reducer: { auth, lastUploadedbook, readerChart, booksCategory, search },
+  reducer: {
+    auth,
+    lastUploadedbook,
+    readerChart,
+    booksCategory,
+    search,
+    user,
+    allBooks,
+  },
   middleware: [thunk],
 });
 
