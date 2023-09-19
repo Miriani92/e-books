@@ -13,8 +13,9 @@ export const ListenNavigator = () => {
   const Drawer = createDrawerNavigator();
   const dispatch = useDispatch();
 
-  const { isListenSearch } = useAppSelector((state) => state.search);
-
+  const isListenSearchActive = useAppSelector(
+    (state) => state.search.isListenSearch
+  );
   return (
     <Drawer.Navigator
       screenOptions={{
@@ -23,7 +24,7 @@ export const ListenNavigator = () => {
             <HeaderWithSearchBar
               {...props}
               setActive={() => dispatch(setSearch(screen))}
-              isActive={isListenSearch}
+              isActive={isListenSearchActive}
             />
           );
         },
@@ -34,7 +35,7 @@ export const ListenNavigator = () => {
     >
       <Drawer.Screen
         name="Home"
-        component={isListenSearch ? SearchScreen : ListenScreenContainer}
+        component={isListenSearchActive ? SearchScreen : ListenScreenContainer}
       ></Drawer.Screen>
     </Drawer.Navigator>
   );

@@ -9,13 +9,12 @@ type Author = Pick<AddBookPayload, "authorName" | "authorSurname">;
 const URL = "authentication/allMemebers/authors/";
 
 export const addAuthor = createAsyncThunk(
-  "booksCategory/addBook",
+  "booksCategory/addAuthor",
   async ({ authorName, authorSurname }: Author) => {
     const { uid } = auth.currentUser;
-    const bookCategoryRef = push(
-      ref(db, URL + `${authorName}_${authorSurname}_${uid}`)
-    );
-    set(bookCategoryRef, {
+    const authorRef = ref(db, URL + `${authorName}-${authorSurname}_${uid}`);
+    set(authorRef, {
+      uid,
       authorName,
       authorSurname,
     });

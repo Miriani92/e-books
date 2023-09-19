@@ -9,7 +9,9 @@ import { setSearch } from "../../../store/reducers/search";
 export const ReadNavigator = () => {
   const screen = "ReadScreen";
   const dispatch = useAppDispatch();
-  const { isReadSearch } = useAppSelector((state) => state.search);
+  const isReadSearchActive = useAppSelector(
+    (state) => state.search.isReadSearch
+  );
   const Drawer = createDrawerNavigator();
   return (
     <Drawer.Navigator
@@ -19,7 +21,7 @@ export const ReadNavigator = () => {
             <HeaderWithSearchBar
               {...props}
               setActive={() => dispatch(setSearch(screen))}
-              isActive={isReadSearch}
+              isActive={isReadSearchActive}
             />
           );
         },
@@ -30,7 +32,7 @@ export const ReadNavigator = () => {
     >
       <Drawer.Screen
         name="Home"
-        component={isReadSearch ? SearchScreen : ReadScreenContainer}
+        component={isReadSearchActive ? SearchScreen : ReadScreenContainer}
       ></Drawer.Screen>
     </Drawer.Navigator>
   );

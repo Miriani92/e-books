@@ -11,8 +11,9 @@ type BookListProps = {
 export const BookList: React.FC<BookListProps> = ({ data }) => {
   return (
     <FlatList
-      className="w-11/12 self-center py-4"
+      className="w-11/12 self-center my-4"
       ItemSeparatorComponent={() => <View className="h-2 "></View>}
+      showsVerticalScrollIndicator={false}
       data={data}
       keyExtractor={(item: any) => item.header}
       renderItem={({ item }) => {

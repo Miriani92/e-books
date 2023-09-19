@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, TextInput, TouchableOpacity } from "react-native";
+import { View, TextInput, TouchableOpacity, Keyboard } from "react-native";
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -23,6 +23,7 @@ export const SearchInput: React.FC<SearchProps> = ({
   };
 
   const handleSearchClosed = () => {
+    Keyboard.dismiss();
     setActive(false);
   };
   const transitionValue = useSharedValue(60);
@@ -34,7 +35,7 @@ export const SearchInput: React.FC<SearchProps> = ({
 
   useEffect(() => {
     if (isActive) {
-      transitionValue.value = withTiming(100);
+      transitionValue.value = withTiming(100, { duration: 300 });
     } else {
       transitionValue.value = withTiming(60);
     }
