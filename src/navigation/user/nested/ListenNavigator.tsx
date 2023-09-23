@@ -7,15 +7,17 @@ import { FilterContainer } from "../../../features";
 import { SearchScreen } from "../../../screens";
 import { useDispatch } from "react-redux";
 import { setSearch } from "../../../store/reducers/search";
+import { searchAuthor } from "../../../store/actions/search";
 
 export const ListenNavigator = () => {
   const screen = "ListenScreen";
   const Drawer = createDrawerNavigator();
-  const dispatch = useDispatch();
+  const dispatch: any = useDispatch();
 
   const isListenSearchActive = useAppSelector(
     (state) => state.search.isListenSearch
   );
+
   return (
     <Drawer.Navigator
       screenOptions={{
@@ -25,6 +27,9 @@ export const ListenNavigator = () => {
               {...props}
               setActive={() => dispatch(setSearch(screen))}
               isActive={isListenSearchActive}
+              setSearchQuery={(value: string) => {
+                dispatch(searchAuthor({ queryWord: value }));
+              }}
             />
           );
         },

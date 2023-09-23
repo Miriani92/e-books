@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TouchableOpacity, View } from "react-native";
 import { SearchInput } from "../atoms/SearchInput";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 
 export const ReadScreenHeader: React.FC<any> = ({
+  setSearchQuery,
   route,
   navigation,
   back,
@@ -12,15 +13,36 @@ export const ReadScreenHeader: React.FC<any> = ({
   isActive,
   setActive,
 }) => {
+  const [query, setQuery] = useState<string>("");
+
   const navigateToFavorte = () => {
     navigation.push("Favorite");
   };
   const navigateToDrawerFilter = () => {
     navigation.openDrawer();
   };
+  const handleSetQuery = (value: string) => {
+    setQuery(value);
+  };
+  useEffect(() => {
+    const id = setTimeout(() => {
+      if (query.length) {
+        setSearchQuery(query);
+      }
+    }, 1000);
+    return () => clearTimeout(id);
+  }, [query]);
+
   return (
     <View className="self-center mt-12  flex-row w-full  align-bottom   justify-around">
-      <SearchInput style={""} setActive={setActive} isActive={isActive} />
+      <SearchInput
+        style={""}
+        handleSearchInput={handleSetQuery}
+        setActive={setActive}
+        isActive={isActive}
+        setQuery={setQuery}
+        inputQuery={query}
+      />
       {!isActive && (
         <>
           <TouchableOpacity

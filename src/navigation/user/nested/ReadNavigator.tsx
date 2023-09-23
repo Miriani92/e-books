@@ -4,11 +4,12 @@ import { FilterContainer, ReadScreenContainer } from "../../../features";
 import { HeaderWithSearchBar } from "../../../components";
 import { SearchScreen } from "../../../screens";
 import { useAppDispatch, useAppSelector } from "../../../hooks/app/useStore";
+import { searchAuthor } from "../../../store/actions/search";
 import { setSearch } from "../../../store/reducers/search";
 
 export const ReadNavigator = () => {
   const screen = "ReadScreen";
-  const dispatch = useAppDispatch();
+  const dispatch: any = useAppDispatch();
   const isReadSearchActive = useAppSelector(
     (state) => state.search.isReadSearch
   );
@@ -22,6 +23,9 @@ export const ReadNavigator = () => {
               {...props}
               setActive={() => dispatch(setSearch(screen))}
               isActive={isReadSearchActive}
+              setSearchQuery={(value: string) => {
+                dispatch(searchAuthor({ queryWord: value }));
+              }}
             />
           );
         },

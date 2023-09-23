@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { ref, get, set } from "firebase/database";
 import { db } from "../../utils/firebase";
-import { ref, set, push } from "firebase/database";
 import { auth } from "../../utils/firebase";
 import type { AddBookPayload } from "./addBook";
 
@@ -12,12 +12,17 @@ export const addAuthor = createAsyncThunk(
   "booksCategory/addAuthor",
   async ({ authorName, authorSurname }: Author) => {
     const { uid } = auth.currentUser;
-    const authorRef = ref(db, URL + `${authorName}-${authorSurname}_${uid}`);
-    set(authorRef, {
-      uid,
-      authorName,
-      authorSurname,
+    const authorRef = ref(db, URL + uid);
+    get(authorRef).then((snapshot) => {
+      if (!snapshot.exists()) {
+        // if specified url author does not exitst create if not pass
+        set(authorRef, {
+          uid,
+          authorName,
+          authorSurname,
+        });
+      }
     });
-    return 0;
+    return;
   }
 );

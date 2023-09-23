@@ -8,21 +8,30 @@ import Animated, {
 import { AntDesign } from "@expo/vector-icons";
 
 type SearchProps = {
+  inputQuery: string;
+  setQuery: (value: string) => void;
   setActive?(value: boolean): void;
   style?: string;
   isActive?: boolean;
+  handleSearchInput?: (value: string) => void;
 };
 
 export const SearchInput: React.FC<SearchProps> = ({
+  setQuery,
+  inputQuery,
+  handleSearchInput,
   setActive,
   style,
   isActive,
 }) => {
   const handleSearchTouched = () => {
-    setActive(true);
+    if (!isActive) {
+      setActive(true);
+    }
   };
 
   const handleSearchClosed = () => {
+    setQuery("");
     Keyboard.dismiss();
     setActive(false);
   };
@@ -75,10 +84,12 @@ export const SearchInput: React.FC<SearchProps> = ({
       </View>
       <View className="w-5/6 h-10  bg-white-slate rounded-lg align-middle justify-center">
         <TextInput
+          value={inputQuery}
           autoCapitalize="none"
           placeholder="Search Authors"
           className="pl-1"
           onTouchStart={handleSearchTouched}
+          onChangeText={(value) => handleSearchInput(value)}
         />
       </View>
     </Animated.View>
