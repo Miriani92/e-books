@@ -30,7 +30,7 @@ export const TabNavigator = () => {
     };
   }, []);
 
-  const singleBookImage = MyBooksData[1].imageSource;
+  const currentReadingBookImage = MyBooksData[1].imageSource;
   const Tab = createBottomTabNavigator();
   const setOptions = ({ route }) => ({
     tabBarIcon: ({ focused }) => {
@@ -47,11 +47,11 @@ export const TabNavigator = () => {
       if (route.name === "Listen") {
         return <FontAwesome5 name="headphones" size={24} color={iconColor} />;
       }
-      if (route.name === "SingleBook") {
+      if (route.name === "currentReadingBook") {
         // hardcoded -- needs to be changed
         return (
           <Image
-            source={singleBookImage}
+            source={currentReadingBookImage}
             className="w-9 h-14 shadow-md  -translate-y-4 rounded-md"
           />
         );
@@ -100,7 +100,7 @@ export const TabNavigator = () => {
           })}
         ></Tab.Screen>
         <Tab.Screen
-          name="SingleBook"
+          name="currentReadingBook"
           options={{ tabBarLabel: "", tabBarStyle: { display: "none" } }}
           component={BookScreen}
         ></Tab.Screen>

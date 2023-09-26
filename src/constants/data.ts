@@ -389,7 +389,7 @@ export const infoRowsData = [
   },
 ];
 
-export const addBookCategoryPickerData: DataProps[] = [
+export const bookCategories: DataProps[] = [
   { label: "Choose Category", value: "" },
   { label: "Poetry", value: "poetry" },
   { label: "Prose", value: "prose" },

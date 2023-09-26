@@ -13,6 +13,7 @@ export const addBookToCategory = createAsyncThunk(
     authorSurname,
     category,
     storedPdfUrl,
+    storedCoverImageUrl,
   }: AddBookPayload) => {
     const bookCategoryRef = push(ref(db, URL + `/${category}`));
     set(bookCategoryRef, {
@@ -21,6 +22,7 @@ export const addBookToCategory = createAsyncThunk(
       authorSurname,
       category,
       storedPdfUrl,
+      storedCoverImageUrl,
     });
     return 0;
   }

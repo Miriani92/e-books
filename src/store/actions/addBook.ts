@@ -13,6 +13,7 @@ export type AddBookPayload = {
   category: string;
   authorSurname: string;
   storedPdfUrl: string;
+  storedCoverImageUrl: string;
 };
 
 export const onAddBook = createAsyncThunk(
@@ -24,6 +25,7 @@ export const onAddBook = createAsyncThunk(
       authorSurname,
       category,
       storedPdfUrl,
+      storedCoverImageUrl,
     }: AddBookPayload,
     { dispatch }
   ) => {
@@ -34,6 +36,7 @@ export const onAddBook = createAsyncThunk(
         authorSurname,
         category,
         storedPdfUrl,
+        storedCoverImageUrl,
       };
 
       const { uid } = auth.currentUser;

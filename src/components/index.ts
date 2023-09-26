@@ -22,3 +22,5 @@ export { ParametersModalContainer } from "./molecules/ParametersModalContainer";
 export { AddTheBook } from "./molecules/AddTheBook";
 export { PickerInput } from "./atoms/PickerInput";
 export { BookList } from "./organisms/BookList";
+export { HeaderLeft } from "./atoms/HeaderLeft";
+export { CategoryButton } from "./atoms/CategoryButton";
