@@ -8,6 +8,7 @@ import { addBook } from "./allBooks";
 
 const URL = "authentication/userOwned/books";
 export type AddBookPayload = {
+  id: string;
   header: string;
   authorName: string;
   category: string;
@@ -20,6 +21,7 @@ export const onAddBook = createAsyncThunk(
   "myBooks/addBook",
   async (
     {
+      id,
       header,
       authorName,
       authorSurname,
@@ -31,6 +33,7 @@ export const onAddBook = createAsyncThunk(
   ) => {
     try {
       const addedBookData = {
+        id,
         header,
         authorName,
         authorSurname,
@@ -44,7 +47,7 @@ export const onAddBook = createAsyncThunk(
       const newBookRef = push(ref(db, URL + `/${uid}`));
       set(newBookRef, addedBookData);
       dispatch(addBookToCategory(addedBookData));
-      dispatch(addAuthor({ authorName, authorSurname }));
+      dispatch(addAuthor({ authorName, authorSurname, id }));
       dispatch(addBook(addedBookData));
 
       return;

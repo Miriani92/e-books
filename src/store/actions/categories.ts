@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { db } from "../../utils/firebase";
-import { getDatabase, refFromURL } from "firebase/database";
 import { get, ref, limitToFirst, query, child } from "firebase/database";
 
 const URL = "/authentication/userReadable/books/categories";
@@ -16,10 +15,9 @@ export const loadByCategories = createAsyncThunk(
       const getBooksByCategories = async () => {
         const result = [];
         let idx = 0;
-
         while (idx < searchWords.length) {
           const word = searchWords[idx];
-          const categoryRef = child(ref(db), URL + `/${word}`);
+          const categoryRef = query(ref(db, URL + `/${word}`), limitToFirst(5));
           await get(categoryRef).then((snapshot) => {
             if (snapshot.exists()) {
               const payload = snapshot.val();

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, Keyboard } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import uuid from "react-uuid";
 import { Button } from "../../../../components";
 import { bookCategories } from "../../../../constants/data";
 import { PickerInput } from "../../../../components";
@@ -13,6 +14,7 @@ import { handleFbStorageUpload as uploadToStorage } from "../../../../store/util
 import * as ImagePicker from "expo-image-picker";
 
 type InputProps = {
+  id: string;
   header: string;
   authorName: string;
   authorSurname: string;
@@ -24,6 +26,7 @@ export const UploadBook = () => {
   const [isPickerActive, setIsPickerActive] = useState<boolean>(false);
   const [{ authorName, category, authorSurname, header, coverUrl }, setBook] =
     useState<InputProps>({
+      id: "",
       header: "",
       authorName: "",
       authorSurname: "",
@@ -71,6 +74,7 @@ export const UploadBook = () => {
       const storedCoverImageUrl = await uploadToStorage(coverUrl, null);
 
       const bookData = {
+        id: uuid(),
         header: header?.toLowerCase().trim(),
         authorName: authorName?.toLowerCase().trim(),
         authorSurname: authorSurname?.toLowerCase().trim(),
@@ -83,6 +87,7 @@ export const UploadBook = () => {
 
       setOnLoading({ loading: false });
       setBook({
+        id: "",
         header: "",
         authorName: "",
         category: "",

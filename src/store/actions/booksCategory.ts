@@ -8,6 +8,7 @@ const URL = "authentication/userReadable/books/categories";
 export const addBookToCategory = createAsyncThunk(
   "booksCategory/addBook",
   async ({
+    id,
     header,
     authorName,
     authorSurname,
@@ -17,6 +18,7 @@ export const addBookToCategory = createAsyncThunk(
   }: AddBookPayload) => {
     const bookCategoryRef = push(ref(db, URL + `/${category}`));
     set(bookCategoryRef, {
+      id,
       header,
       authorName,
       authorSurname,

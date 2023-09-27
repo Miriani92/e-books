@@ -1,11 +1,20 @@
+import React from "react";
 import { View, Text } from "react-native";
 import { Image } from "expo-image";
 import { Animated } from "react-native";
-import React from "react";
+import type { BookProps } from "./Book";
 
 export const MyBook: React.FC<any> = ({ item, xAxis, index }) => {
   const BOOK_WIDTH = 170;
-  const { imageSource, title, author } = item;
+  const {
+    id,
+    authorName,
+    authorSurname,
+    category,
+    header,
+    storedCoverImageUrl,
+    storedPdfUrl,
+  } = item;
 
   const translateX = Animated.add(
     xAxis,
@@ -22,13 +31,15 @@ export const MyBook: React.FC<any> = ({ item, xAxis, index }) => {
       }}
     >
       <Image
-        source={imageSource}
+        source={storedCoverImageUrl}
         className="h-60 w-40 rounded-t-xl"
         contentFit="cover"
       />
       <View className="w-40 h-20 bg-grey-light p-4  justify-center self-center rounded-b-xl">
-        <Text className="self-center pb-1">{title}</Text>
-        <Text className="self-center pt-1">{author}</Text>
+        <Text className="self-center pb-1">{header}</Text>
+        <Text className="self-center pt-1">
+          {authorName + " " + authorSurname}
+        </Text>
       </View>
     </Animated.View>
   );
