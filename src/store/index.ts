@@ -11,6 +11,7 @@ import search from "./reducers/search";
 import user from "./reducers/user";
 import allBooks from "./reducers/allBooks";
 import categories from "./reducers/categories";
+import readingList from "./reducers/readingList";
 
 const persistConfig = {
   key: "auth",
@@ -29,6 +30,7 @@ export const store = configureStore({
     user,
     allBooks,
     categories,
+    readingList,
   },
   middleware: [thunk],
 });

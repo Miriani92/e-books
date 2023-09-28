@@ -25,8 +25,8 @@ export const BooksContainer: React.FC<BooksContainerProps> = ({
   isLoading = false,
 }) => {
   const navigation = useNavigation<any>();
-  const handlePressOnBook = () => {
-    navigation.navigate("BookOverview");
+  const handlePressOnBook = (item: any) => {
+    navigation.navigate("BookOverview", { ...item });
   };
   const flatListSeparator = () => {
     return <View className="mb-4"></View>;
@@ -59,7 +59,7 @@ export const BooksContainer: React.FC<BooksContainerProps> = ({
           showsVerticalScrollIndicator={false}
           keyExtractor={(item: any) => item.id}
           renderItem={({ item }) => (
-            <TouchableOpacity onPress={handlePressOnBook}>
+            <TouchableOpacity onPress={() => handlePressOnBook(item)}>
               <Book key={item.id} {...item} />
             </TouchableOpacity>
           )}

@@ -11,6 +11,9 @@ type ButtonProps = {
   onPress?: any;
   isLoading?: boolean;
   isDisabled?: boolean;
+  textStyle?: string;
+  iconSize?: number;
+  iconColor?: string;
 };
 
 export const Button: React.FC<ButtonProps> = ({
@@ -21,22 +24,29 @@ export const Button: React.FC<ButtonProps> = ({
   onPress,
   isLoading,
   isDisabled,
+  textStyle = "",
+  iconSize = 24,
+  iconColor = "white",
 }) => {
+  const iconWrapperStyle = icon ? "justify-around" : "justify-center";
+
   return (
     <TouchableOpacity
       className={`w-5/6 h-14  px-4 self-center justify-center rounded-lg ${style}`}
       onPress={onPress}
       disabled={isDisabled}
     >
-      <View className="flex-row justify-center">
-        <Text
-          className={`text-center text-lg font-bold tracking-widestr  ${textColor}`}
-        >
-          {`${!isLoading ? text : ""}`}
-        </Text>
+      <View className="flex-row justify-around">
+        {!isLoading && (
+          <Text
+            className={`text-center text-lg  font-bold tracking-widestr  ${textColor} ${textStyle}`}
+          >
+            {text}
+          </Text>
+        )}
         {icon && !isLoading ? (
-          <View className="h-auto align-middle justify-center">
-            <Icon name={icon} size={24} color={"white"} />
+          <View className={` h-auto align-middle ${iconWrapperStyle} `}>
+            <Icon name={icon} size={iconSize} color={iconColor} />
           </View>
         ) : null}
         {isLoading ? <ActivityIndicator color="white" /> : null}
