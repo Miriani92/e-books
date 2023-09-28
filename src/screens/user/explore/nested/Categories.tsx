@@ -12,8 +12,9 @@ import { ScrollView } from "react-native-gesture-handler";
 export const Categories = () => {
   const [searchWords, setSearchWords] = useState<string[]>([]);
   const dispatch: any = useAppDispatch();
-  const booksByCategory = useAppSelector((state) => state.categories.payload);
-
+  const { payload: booksByCategory, loading } = useAppSelector(
+    (state) => state.categories
+  );
   const hanldeSetSearchWord = (word) => {
     const idx = searchWords.indexOf(word);
     if (idx !== -1) {
@@ -58,6 +59,7 @@ export const Categories = () => {
           text="Filter"
           style="self-center bg-teal-400 w-32 h-10"
           onPress={hanldeSubmitCategorySearch}
+          isLoading={loading}
         />
         <View className="w-full h-1 bg-slate-400 mt-4"></View>
       </View>
