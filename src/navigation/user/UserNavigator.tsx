@@ -41,7 +41,7 @@ export const UserNavigator = () => {
         name="BestSellers"
         component={WeeklyBestSellersScreen}
       ></Stack.Screen>
-      <Stack.Screen name="MyBooks" component={MyBooksScreen}></Stack.Screen>
+      <Stack.Screen name="ReadingList" component={MyBooksScreen}></Stack.Screen>
       <Stack.Screen name="NewBooks" component={NewBooksScreen}></Stack.Screen>
       <Stack.Screen
         name="BookOfTheDay"

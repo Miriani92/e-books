@@ -6,7 +6,6 @@ import { SeeAllButton } from "../../../components";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { AntDesign } from "@expo/vector-icons";
 import { BookCarousel } from "../../../components";
-import { MyBooksData } from "../../../constants/data";
 import { ExploreBanner } from "../../../components";
 import { Chart } from "../../../components";
 import { useAppSelector } from "../../../hooks/app/useStore";
@@ -14,9 +13,10 @@ import { BookOfTheDayComponent } from "../../../components";
 
 export const Read = () => {
   const chartData = useAppSelector((state) => state.readerChart);
+  const books = useAppSelector((state) => state.readingList.payload);
   const navigation = useNavigation<any>();
   const handleNavigateMyBooks = () => {
-    navigation.push("MyBooks");
+    navigation.push("ReadingList");
   };
   const hanldeNavigateNewBooks = () => {
     navigation.push("NewBooks");
@@ -24,7 +24,7 @@ export const Read = () => {
   return (
     <ScrollView>
       <ScreenContainer>
-        <Text className="text-large mt-4 mb-2">MY BOOKS</Text>
+        <Text className="text-large mt-4 mb-2">ReadingList</Text>
         <View className="flex-row w-full justify-between">
           <View className="self-center">
             <SeeAllButton
@@ -42,7 +42,7 @@ export const Read = () => {
             </View>
           </TouchableOpacity>
         </View>
-        <BookCarousel data={MyBooksData} />
+        <BookCarousel data={books} />
         <ExploreBanner />
         <Chart data={chartData} />
         <BookOfTheDayComponent />

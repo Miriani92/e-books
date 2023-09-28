@@ -23,7 +23,6 @@ const readingList = createSlice({
       state.loading = true;
     });
     builder.addCase(getReadingList.fulfilled, (state, action) => {
-      console.log("yessssss", action.payload);
       state.payload = action.payload;
       state.loading = false;
     });
