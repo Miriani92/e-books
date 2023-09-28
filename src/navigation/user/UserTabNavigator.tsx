@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { LogBox } from "react-native";
-import { Image } from "react-native";
+import { Image } from "expo-image";
 import { BookScreen } from "../../screens";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -22,6 +22,7 @@ export const TabNavigator = () => {
   const { isListenSearch, isReadSearch } = useAppSelector(
     (state) => state.search
   );
+  const currentBook = useAppSelector((state) => state.currentBook.payload);
 
   const transitionValue = useSharedValue(800);
   const animatedStyle = useAnimatedStyle(() => {
@@ -30,7 +31,10 @@ export const TabNavigator = () => {
     };
   }, []);
 
-  const currentReadingBookImage = MyBooksData[1].imageSource;
+  const currentReadingBookImage = currentBook?.storedCoverImageUrl
+    ? currentBook.storedCoverImageUrl
+    : MyBooksData[1].storedCoverImageUrl;
+
   const Tab = createBottomTabNavigator();
   const setOptions = ({ route }) => ({
     tabBarIcon: ({ focused }) => {
@@ -48,7 +52,6 @@ export const TabNavigator = () => {
         return <FontAwesome5 name="headphones" size={24} color={iconColor} />;
       }
       if (route.name === "currentReadingBook") {
-        // hardcoded -- needs to be changed
         return (
           <Image
             source={currentReadingBookImage}

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Image } from "expo-image";
 import { View, Text } from "react-native";
 import { useRoute } from "@react-navigation/native";
 import { Button } from "../../../components";
 import { useAppDispatch } from "../../../hooks/app/useStore";
 import { addBook } from "../../../store/actions/readingList";
+import { useAppSelector } from "../../../hooks/app/useStore";
 import type { AddBookPayload as Book } from "../../../store/actions/addBook";
 
 export const BookOverview = () => {
@@ -18,21 +19,27 @@ export const BookOverview = () => {
     category,
   } = useRoute().params as Book;
 
+  const readingList = useAppSelector((state) => state.currentBook.payload);
   const dispatch: any = useAppDispatch();
+  const isInMyReadingList = readingList.some((item) => item.id === id);
+  const firstButtonText = isInMyReadingList ? "Continue Reading" : "Pick Book";
 
   const author = authorName + " " + authorSurname;
   const handlePickBookPressed = async () => {
-    dispatch(
-      addBook({
-        id,
-        header,
-        authorName,
-        authorSurname,
-        storedCoverImageUrl,
-        storedPdfUrl,
-        category,
-      })
-    );
+    if (!isInMyReadingList) {
+      dispatch(
+        addBook({
+          id,
+          header,
+          authorName,
+          authorSurname,
+          storedCoverImageUrl,
+          storedPdfUrl,
+          category,
+        })
+      );
+    }
+    // implement else and  set current reading boook
   };
   const handlePreviewBookPressed = () => {
     return;
@@ -49,8 +56,8 @@ export const BookOverview = () => {
       <Text className="self-center text-center mb-2">{author}</Text>
       <View className="my-4 self-center w-full flex-row justify-around">
         <Button
-          style="w-36  h-10  bg-emerald-400 "
-          text="Pick Book"
+          style="w-40  h-10  bg-emerald-400 "
+          text={firstButtonText}
           textStyle="text-xs"
           iconSize={18}
           icon="feather"
@@ -58,7 +65,7 @@ export const BookOverview = () => {
           onPress={handlePickBookPressed}
         />
         <Button
-          style="w-36 h-10  bg-amber-300 "
+          style="w-40 h-10  bg-amber-300 "
           text="Preview Book"
           textStyle="text-xs"
           icon="eye"

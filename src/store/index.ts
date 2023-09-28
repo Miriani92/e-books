@@ -12,13 +12,23 @@ import user from "./reducers/user";
 import allBooks from "./reducers/allBooks";
 import categories from "./reducers/categories";
 import readingList from "./reducers/readingList";
+// import currentBook from "./reducers/currentReadingBook";
+import currentReadingBook from "./reducers/currentReadingBook";
 
-const persistConfig = {
+const authPersistConfig = {
   key: "auth",
   storage: AsyncStorage,
 };
+const currentReadingBookPersistConfig = {
+  key: "currentReadingBook",
+  storage: AsyncStorage,
+};
 
-const auth = persistReducer(persistConfig, authSlice);
+const auth = persistReducer(authPersistConfig, authSlice);
+const currentBook = persistReducer(
+  currentReadingBookPersistConfig,
+  currentReadingBook
+);
 
 export const store = configureStore({
   reducer: {
@@ -31,6 +41,7 @@ export const store = configureStore({
     allBooks,
     categories,
     readingList,
+    currentBook,
   },
   middleware: [thunk],
 });
