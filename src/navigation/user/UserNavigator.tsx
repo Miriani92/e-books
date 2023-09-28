@@ -13,6 +13,7 @@ import {
   DashboardScreen,
   UserInfoScreen,
   UploadBookScreen,
+  BookOverviewScreen,
 } from "../../screens";
 
 export const UserNavigator = () => {
@@ -55,6 +56,10 @@ export const UserNavigator = () => {
       <Stack.Screen
         name="UploadBook"
         component={UploadBookScreen}
+      ></Stack.Screen>
+      <Stack.Screen
+        name="BookOverview"
+        component={BookOverviewScreen}
       ></Stack.Screen>
     </Stack.Navigator>
   );

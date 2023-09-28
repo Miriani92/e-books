@@ -26,3 +26,4 @@ export { MyTransitions as MyTransactionsScreen } from "./user/parameters/nested/
 export { UploadBook as UploadBookScreen } from "./user/parameters/nested/UploadBook";
 
 export { Search as SearchScreen } from "./user/shared/Search";
+export { BookOverview as BookOverviewScreen } from "./user/shared/BookOverview";

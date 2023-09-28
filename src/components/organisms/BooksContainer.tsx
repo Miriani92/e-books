@@ -2,7 +2,8 @@ import React from "react";
 import { View, FlatList, Text } from "react-native";
 import { BooksContainerBanner } from "../molecules/BooksContainerBanner";
 import { Book } from "../molecules/Book";
-import { ActivityIndicator } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 
 type BooksContainerProps = {
   data: any[];
@@ -23,6 +24,10 @@ export const BooksContainer: React.FC<BooksContainerProps> = ({
   isBanner = true,
   isLoading = false,
 }) => {
+  const navigation = useNavigation<any>();
+  const handlePressOnBook = () => {
+    navigation.navigate("BookOverview");
+  };
   const flatListSeparator = () => {
     return <View className="mb-4"></View>;
   };
@@ -53,7 +58,11 @@ export const BooksContainer: React.FC<BooksContainerProps> = ({
           ListEmptyComponent={listComponent}
           showsVerticalScrollIndicator={false}
           keyExtractor={(item: any) => item.id}
-          renderItem={({ item }) => <Book key={item.id} {...item} />}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={handlePressOnBook}>
+              <Book key={item.id} {...item} />
+            </TouchableOpacity>
+          )}
         />
       )}
     </View>
