@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
-import { LogBox } from "react-native";
+import { LogBox, View } from "react-native";
 import { Image } from "expo-image";
-import { BookScreen } from "../../screens";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
@@ -22,6 +21,10 @@ export const TabNavigator = () => {
   const { isListenSearch, isReadSearch } = useAppSelector(
     (state) => state.search
   );
+  const EmptyComponent = () => {
+    return <View></View>;
+  };
+
   const currentBook = useAppSelector((state) => state.currentBook.payload);
 
   const transitionValue = useSharedValue(800);
@@ -55,7 +58,7 @@ export const TabNavigator = () => {
         return (
           <Image
             source={currentReadingBookImage}
-            className="w-9 h-14 shadow-md  -translate-y-4 rounded-md"
+            className="w-10 h-16 shadow-md  -translate-y-4 rounded-md"
           />
         );
       }
@@ -104,8 +107,18 @@ export const TabNavigator = () => {
         ></Tab.Screen>
         <Tab.Screen
           name="currentReadingBook"
-          options={{ tabBarLabel: "", tabBarStyle: { display: "none" } }}
-          component={BookScreen}
+          options={{
+            unmountOnBlur: true,
+            tabBarLabel: "",
+            tabBarStyle: { display: "none" },
+          }}
+          listeners={({ navigation }) => ({
+            tabPress: (e) => {
+              e.preventDefault();
+              navigation?.navigate("CurrentBook");
+            },
+          })}
+          component={EmptyComponent}
         ></Tab.Screen>
         <Tab.Screen name="Explore" component={ExploreNavigator}></Tab.Screen>
         <Tab.Screen

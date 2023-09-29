@@ -12,7 +12,6 @@ import user from "./reducers/user";
 import allBooks from "./reducers/allBooks";
 import categories from "./reducers/categories";
 import readingList from "./reducers/readingList";
-// import currentBook from "./reducers/currentReadingBook";
 import currentReadingBook from "./reducers/currentReadingBook";
 
 const authPersistConfig = {

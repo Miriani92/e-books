@@ -19,8 +19,9 @@ export const BookOverview = () => {
     category,
   } = useRoute().params as Book;
 
-  const readingList = useAppSelector((state) => state.currentBook.payload);
+  const readingList = useAppSelector((state) => state.readingList.payload);
   const dispatch: any = useAppDispatch();
+
   const isInMyReadingList = readingList.some((item) => item.id === id);
   const firstButtonText = isInMyReadingList ? "Continue Reading" : "Pick Book";
 

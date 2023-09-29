@@ -14,6 +14,7 @@ import {
   UserInfoScreen,
   UploadBookScreen,
   BookOverviewScreen,
+  BookScreen,
 } from "../../screens";
 
 export const UserNavigator = () => {
@@ -60,6 +61,15 @@ export const UserNavigator = () => {
       <Stack.Screen
         name="BookOverview"
         component={BookOverviewScreen}
+      ></Stack.Screen>
+
+      <Stack.Screen
+        name="CurrentBook"
+        component={BookScreen}
+        options={{
+          headerShown: false,
+          gestureDirection: "vertical",
+        }}
       ></Stack.Screen>
     </Stack.Navigator>
   );

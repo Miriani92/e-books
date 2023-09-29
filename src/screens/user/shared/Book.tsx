@@ -1,11 +1,11 @@
+import React from "react";
 import { View, Text } from "react-native";
 import { Button } from "../../../components";
 import { useNavigation } from "@react-navigation/native";
-import React from "react";
 
 export const Book = () => {
   const navigation = useNavigation<any>();
-  // create the back button
+
   const navigateBack = () => {
     navigation.goBack();
   };
