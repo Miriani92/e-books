@@ -103,6 +103,7 @@ export const TabNavigator = () => {
             tabBarStyle: {
               display: isListenSearch ? "none" : "flex",
             },
+            lazy: true,
           })}
         ></Tab.Screen>
         <Tab.Screen
@@ -120,10 +121,15 @@ export const TabNavigator = () => {
           })}
           component={EmptyComponent}
         ></Tab.Screen>
-        <Tab.Screen name="Explore" component={ExploreNavigator}></Tab.Screen>
+        <Tab.Screen
+          name="Explore"
+          component={ExploreNavigator}
+          options={{ lazy: true }}
+        ></Tab.Screen>
         <Tab.Screen
           name="Parameters"
           component={ParametersNavigator}
+          options={{ lazy: true }}
         ></Tab.Screen>
       </Tab.Navigator>
     </Animated.View>

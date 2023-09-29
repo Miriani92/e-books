@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text } from "react-native";
 import { Image } from "expo-image";
 import { Animated } from "react-native";
-import type { BookProps } from "./Book";
 
 export const MyBook: React.FC<any> = ({ item, xAxis, index }) => {
   const BOOK_WIDTH = 170;
