@@ -8,6 +8,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { ReadNavigator } from "./nested/ReadNavigator";
 import { ListenNavigator } from "./nested/ListenNavigator";
 import { ExploreNavigator } from "./nested/ExploreNavigator";
+import { CurrentReadingBookProps } from "../../store/reducers/currentReadingBook";
 import { MyBooksData } from "../../constants/data";
 import { ParametersNavigator } from "./nested/ParametersNavigator";
 import Animated, {
@@ -25,7 +26,11 @@ export const TabNavigator = () => {
     return <View></View>;
   };
 
-  const currentBook = useAppSelector((state) => state.currentBook.payload);
+  const imageSource = useAppSelector(
+    (state) =>
+      (state.currentBook as CurrentReadingBookProps)?.payload
+        ?.storedCoverImageUrl
+  );
 
   const transitionValue = useSharedValue(800);
   const animatedStyle = useAnimatedStyle(() => {
@@ -34,8 +39,8 @@ export const TabNavigator = () => {
     };
   }, []);
 
-  const currentReadingBookImage = currentBook?.storedCoverImageUrl
-    ? currentBook.storedCoverImageUrl
+  const currentReadingBookImage = imageSource
+    ? imageSource
     : MyBooksData[1].storedCoverImageUrl;
 
   const Tab = createBottomTabNavigator();

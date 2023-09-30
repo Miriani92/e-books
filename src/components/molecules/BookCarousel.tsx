@@ -50,6 +50,7 @@ export const BookCarousel: React.FC<any> = ({ data }) => {
 
   return (
     <AnimatedFlatList
+      extraData={data}
       ListEmptyComponent={listEmptyComponent}
       ItemSeparatorComponent={flatListSeparator}
       scrollEventThrottle={16}

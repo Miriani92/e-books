@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { AddBookPayload as Book } from "../actions/addBook";
 
-type CurrentReadingBookProps = {
+export type CurrentReadingBookProps = {
   loading: boolean;
   payload: Book | undefined;
   error: any;

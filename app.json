@@ -19,9 +19,12 @@
       "resizeMode": "contain",
       "backgroundColor": "#4F46E5"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.miriani1992.Shota"
     },
     "android": {
       "adaptiveIcon": {
@@ -31,6 +34,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b10c8c7a-b80c-4430-ac16-94afc172c193"
+      }
     }
   }
 }

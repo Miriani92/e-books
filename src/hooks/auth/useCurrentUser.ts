@@ -16,16 +16,18 @@ export const useCurrentUser = () => {
 
   const onAppOpen = async () => {
     try {
-      await dispatch(handleSignIn(cachedCredentials));
-      await dispatch(loadRecentUploadedBooks());
-      await dispatch(getReadingList());
+      if (isSigndIn) {
+        await dispatch(handleSignIn(cachedCredentials));
+        await dispatch(loadRecentUploadedBooks());
+        await dispatch(getReadingList());
+      }
     } catch (error) {
       console.error(error);
     }
   };
   useEffect(() => {
     onAppOpen();
-  }, [AppState.isAvailable]);
+  }, [AppState.isAvailable, isSigndIn]);
 
   return { isSigndIn };
 };
